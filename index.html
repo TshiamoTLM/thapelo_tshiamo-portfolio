@@ -1,0 +1,951 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thapelo Moloto — Senior Data Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950:'#04070f', 900:'#0a0e17', 800:'#0d1424', 700:'#111b30', 600:'#162240' },
+            cobalt: { 300:'#7eb3ff', 400:'#4d90fe', 500:'#2E5BFF', 600:'#1a3fd4' },
+          },
+          fontFamily: {
+            sans: ['Inter','Roboto','system-ui','sans-serif'],
+            mono: ['JetBrains Mono','Fira Code','monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{color-scheme:dark}
+    html{background:#0a0e17}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:#0a0e17}
+    ::-webkit-scrollbar-thumb{background:#2E5BFF;border-radius:2px}
+    .code-block{background:#060912;border:1px solid #162240;border-left:3px solid #2E5BFF;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:0.775rem;line-height:1.75;overflow-x:auto;padding:1.25rem 1.5rem;white-space:pre;tab-size:2}
+    .kw{color:#60a5fa;font-weight:600}
+    .fn{color:#93c5fd}
+    .str{color:#86efac}
+    .cm{color:#3d5070;font-style:italic}
+    .num{color:#c4b5fd}
+    .tp{color:#7dd3fc}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .blue-text{background:linear-gradient(135deg,#60a5fa 0%,#2E5BFF 60%,#1a3fd4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-link{position:relative;transition:color .2s}
+    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#2E5BFF;transition:width .3s ease}
+    .nav-link:hover::after{width:100%}
+    .project-card{border:1px solid #162240;transition:border-color .3s,transform .3s,box-shadow .3s}
+    .project-card:hover{border-color:#2E5BFF;transform:translateY(-4px);box-shadow:0 20px 48px rgba(46,91,255,.12)}
+    .deep-dive-content{max-height:0;overflow:hidden;transition:max-height .6s ease}
+    .deep-dive-content.open{max-height:3200px}
+    .toggle-btn svg{transition:transform .3s}
+    .toggle-btn.open svg{transform:rotate(180deg)}
+    .tag{background:rgba(46,91,255,.1);border:1px solid rgba(46,91,255,.28);color:#7eb3ff}
+    .cert-card{background:linear-gradient(135deg,#0d1424 0%,#111b30 100%);border:1px solid #162240;transition:border-color .3s,box-shadow .3s}
+    .cert-card:hover{border-color:#2E5BFF;box-shadow:0 0 28px rgba(46,91,255,.15)}
+    .btn-primary{background:linear-gradient(135deg,#2E5BFF 0%,#1a3fd4 100%);transition:opacity .2s,box-shadow .2s}
+    .btn-primary:hover{opacity:.88;box-shadow:0 8px 28px rgba(46,91,255,.38)}
+  </style>
+</head>
+<body class="bg-navy-900 text-white font-sans antialiased">
+
+<!-- ══ NAV ══ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-navy-700">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#hero" class="font-mono font-semibold text-sm tracking-widest uppercase">
+      <span class="text-cobalt-400">TLM</span><span class="text-gray-400">.dev</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+      <a href="#about"      class="nav-link hover:text-white">About</a>
+      <a href="#certs"      class="nav-link hover:text-white">Certs</a>
+      <a href="#skills"     class="nav-link hover:text-white">Skills</a>
+      <a href="#projects"   class="nav-link hover:text-white">Projects</a>
+      <a href="#consulting" class="nav-link hover:text-white">Experience</a>
+      <a href="#contact"    class="nav-link hover:text-white">Contact</a>
+    </div>
+    <a href="#contact" class="hidden md:inline-flex btn-primary text-white font-semibold text-xs px-5 py-2.5 rounded-lg uppercase tracking-wider">Hire Me</a>
+    <button id="mob-btn" class="md:hidden text-gray-400 hover:text-cobalt-400 p-1">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="hidden md:hidden border-t border-navy-700 px-6 py-4 space-y-3 text-sm text-gray-400">
+    <a href="#about"      class="block hover:text-cobalt-400">About</a>
+    <a href="#certs"      class="block hover:text-cobalt-400">Certs</a>
+    <a href="#skills"     class="block hover:text-cobalt-400">Skills</a>
+    <a href="#projects"   class="block hover:text-cobalt-400">Projects</a>
+    <a href="#consulting" class="block hover:text-cobalt-400">Experience</a>
+    <a href="#contact"    class="block hover:text-cobalt-400">Contact</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full" style="background:radial-gradient(circle,rgba(46,91,255,.07)0%,transparent 70%)"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(0,127,255,.05)0%,transparent 70%)"></div>
+  </div>
+  <div class="absolute inset-0" style="background-image:linear-gradient(rgba(46,91,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(46,91,255,.025) 1px,transparent 1px);background-size:64px 64px"></div>
+  <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+    <div class="inline-flex items-center gap-2 bg-navy-800 border border-navy-600 rounded-full px-4 py-1.5 mb-8 text-xs text-gray-400 font-mono">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      Available for  data engineering &amp; lakehouse architecture contracts
+    </div>
+    <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-4 leading-tight">
+      <span class="blue-text">Thapelo Tshiamo</span><br/><span class="text-white">Moloto</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-400 font-light mb-5 tracking-wide"> Data Engineer &nbsp;&middot;&nbsp; Lakehouse Architect</p>
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+      <span class="tag text-xs font-mono px-3 py-1 rounded-full">Azure Certified</span>
+      <span class="tag text-xs font-mono px-3 py-1 rounded-full">Databricks Associate</span>
+      <span class="tag text-xs font-mono px-3 py-1 rounded-full">Microsoft Fabric</span>
+      <span class="tag text-xs font-mono px-3 py-1 rounded-full">Legacy Modernisation</span>
+    </div>
+    <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+      I convert fragile legacy stacks into resilient, partition-optimised lakehouses.
+      Specialising in <span class="text-cobalt-400 font-semibold">SQL architecture</span>,
+      <span class="text-cobalt-400 font-semibold">medallion design</span>, and
+      <span class="text-cobalt-400 font-semibold">zero-loss data migrations</span>
+      across Retail, Insurance &amp; Financial Services in South Africa.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#projects" class="btn-primary text-white font-bold px-8 py-3 rounded-lg uppercase tracking-wider text-sm">View Projects</a>
+      <a href="#contact" class="border border-navy-600 hover:border-cobalt-500 text-gray-300 hover:text-white font-medium px-8 py-3 rounded-lg transition-all text-sm">Get In Touch</a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-5 h-5 text-cobalt-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="py-24 px-6 bg-navy-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// About</p>
+        <h2 class="text-4xl font-bold mb-6">Data Engineering<br/><span class="blue-text">Done Properly</span></h2>
+        <p class="text-gray-400 leading-relaxed mb-5">Johannesburg-based  Data Engineer with deep expertise in redesigning brittle legacy reporting stacks into scalable, cloud-native data platforms. I don&apos;t just move data&mdash;I architect systems that survive business growth.</p>
+        <p class="text-gray-400 leading-relaxed mb-5">My core philosophy: <span class="text-white font-medium">SQL is the fundamental unit of data truth</span>. Every pipeline I build is grounded in proper indexing strategies, partitioning schemes, and semantic models that analysts actually understand.</p>
+        <p class="text-gray-400 leading-relaxed">Python is my orchestration layer: CLI tooling, NLP preprocessing, CV image pipelines&mdash;but the <span class="text-cobalt-400 font-semibold">heavy lifting lives in the engine</span>.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-5">
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center hover:border-cobalt-600 transition-colors">
+          <p class="text-4xl font-extrabold blue-text mb-1">3+</p>
+          <p class="text-gray-400 text-sm">Years Engineering<br/>Data Systems</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center hover:border-cobalt-600 transition-colors">
+          <p class="text-4xl font-extrabold blue-text mb-1">10M+</p>
+          <p class="text-gray-400 text-sm">Rows Migrated<br/>Zero Data Loss</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center hover:border-cobalt-600 transition-colors">
+          <p class="text-4xl font-extrabold blue-text mb-1">4</p>
+          <p class="text-gray-400 text-sm">Production<br/>Data Products</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center hover:border-cobalt-600 transition-colors">
+          <p class="text-4xl font-extrabold blue-text mb-1">5</p>
+          <p class="text-gray-400 text-sm">Industry<br/>Certifications</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTS ══ -->
+<section id="certs" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-14">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Credentials</p>
+      <h2 class="text-4xl font-bold">Verified<br/><span class="blue-text">Certifications</span></h2>
+    </div>
+    <div class="reveal grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="cert-card rounded-xl p-7 text-center">
+        <div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#0078d4,#1a3fd4)">
+          <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-1">DP-203</h3>
+        <p class="text-cobalt-400 text-sm font-medium mb-2">Azure Data Engineer Associate</p>
+        <p class="text-gray-500 text-xs leading-relaxed">Microsoft certified expertise in Azure data storage, processing pipelines, and security for enterprise analytics workloads.</p>
+        <div class="mt-4 pt-4 border-t border-navy-600"><span class="text-xs font-mono text-gray-500">Microsoft &middot; Azure</span></div>
+      </div>
+      <div class="cert-card rounded-xl p-7 text-center">
+        <div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#e8402a,#c23316)">
+          <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-1">Databricks</h3>
+        <p class="text-cobalt-400 text-sm font-medium mb-2">Data Engineer Associate</p>
+        <p class="text-gray-500 text-xs leading-relaxed">Certified expertise in Delta Lake, Spark medallion pipelines, and lakehouse architecture on the Databricks Unified Analytics Platform.</p>
+        <div class="mt-4 pt-4 border-t border-navy-600"><span class="text-xs font-mono text-gray-500">Databricks &middot; Delta Lake &middot; Spark</span></div>
+      </div>
+      <div class="cert-card rounded-xl p-7 text-center">
+        <div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,#742774,#4d1c4d)">
+          <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-1">Microsoft Fabric</h3>
+        <p class="text-cobalt-400 text-sm font-medium mb-2">Analytics Engineer</p>
+        <p class="text-gray-500 text-xs leading-relaxed">Certified in OneLake, Lakehouse, Data Warehouse, Real-Time Analytics, and Power BI integration across the unified Fabric platform.</p>
+        <div class="mt-4 pt-4 border-t border-navy-600"><span class="text-xs font-mono text-gray-500">Microsoft &middot; Fabric &middot; OneLake</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills" class="py-24 px-6 bg-navy-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-14">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Technical Stack</p>
+      <h2 class="text-4xl font-bold">Architecture-First<br/><span class="blue-text">Engineering Skills</span></h2>
+    </div>
+    <div class="reveal grid md:grid-cols-3 gap-8">
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-7 hover:border-cobalt-600 transition-colors">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <span class="text-cobalt-400 font-mono font-bold text-sm">SQL</span>
+          </div>
+          <div><h3 class="text-white font-bold">SQL Architecture</h3><p class="text-gray-500 text-xs">Primary Discipline</p></div>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between"><span class="text-gray-300">Indexing &amp; Partitioning</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">Window Functions</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">SCD Type 2 / MERGE</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">Materialized Views</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">Full-Text Search</span><span class="text-cobalt-400 font-mono text-xs">Advanced</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">CTEs &amp; Recursive SQL</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+        </div>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-7 hover:border-cobalt-600 transition-colors">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <span class="text-cobalt-400 font-mono font-bold text-xs">&#x2601;</span>
+          </div>
+          <div><h3 class="text-white font-bold">Cloud &amp; Platforms</h3><p class="text-gray-500 text-xs">Azure &middot; Databricks &middot; Fabric</p></div>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="tag px-2 py-1 rounded">Azure Data Lake Gen2</span>
+          <span class="tag px-2 py-1 rounded">Azure Data Factory</span>
+          <span class="tag px-2 py-1 rounded">Azure Synapse</span>
+          <span class="tag px-2 py-1 rounded">Databricks</span>
+          <span class="tag px-2 py-1 rounded">Delta Lake</span>
+          <span class="tag px-2 py-1 rounded">Microsoft Fabric</span>
+          <span class="tag px-2 py-1 rounded">Apache Spark</span>
+          <span class="tag px-2 py-1 rounded">Z-Order Indexing</span>
+          <span class="tag px-2 py-1 rounded">Medallion Architecture</span>
+          <span class="tag px-2 py-1 rounded">Power BI</span>
+          <span class="tag px-2 py-1 rounded">OneLake</span>
+          <span class="tag px-2 py-1 rounded">dbt</span>
+        </div>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-7 hover:border-cobalt-600 transition-colors">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <span class="text-cobalt-400 font-mono font-bold text-xs">Py</span>
+          </div>
+          <div><h3 class="text-white font-bold">Python Orchestration</h3><p class="text-gray-500 text-xs">Automation &amp; Intelligence Layer</p></div>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between"><span class="text-gray-300">CLI Tooling (Click/Typer)</span><span class="text-cobalt-400 font-mono text-xs">Advanced</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">PySpark / pandas</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">Schema Validation</span><span class="text-cobalt-400 font-mono text-xs">Expert</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">OpenCV / CV Preprocessing</span><span class="text-cobalt-400 font-mono text-xs">Intermediate</span></div>
+          <div class="h-px bg-navy-700"></div>
+          <div class="flex justify-between"><span class="text-gray-300">NLP Pipelines</span><span class="text-cobalt-400 font-mono text-xs">Advanced</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Featured Projects</p>
+      <h2 class="text-4xl font-bold mb-4">Engineering Work<br/><span class="blue-text">Built to Scale</span></h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Each project includes a Technical Deep Dive with real SQL architecture. No tutorials, no SELECT * examples.</p>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
+      <div class="p-8 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 01</span>
+              <span class="text-xs text-gray-500">Retail / BI</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Legacy to Modern BI</h3>
+            <p class="text-cobalt-400 font-medium">Semantic Layer Rebuild</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag text-xs px-2 py-1 rounded">SCD Type 2</span>
+            <span class="tag text-xs px-2 py-1 rounded">Star Schema</span>
+            <span class="tag text-xs px-2 py-1 rounded">Materialized Views</span>
+            <span class="tag text-xs px-2 py-1 rounded">Power BI</span>
+          </div>
+        </div>
+        <p class="text-gray-400 leading-relaxed mb-6">Migrated a mid-size retail business from flat-file CSV reporting to a fully normalised Star Schema on Azure Synapse. Rebuilt the semantic layer from scratch, achieving a <span class="text-white font-medium">72% reduction in Power BI refresh time</span> through incremental partition-based loads and materialised pre-aggregates.</p>
+        <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
+          <p class="text-cobalt-500/70 mb-2">[ Data Flow ]</p>
+          CSV Flat Files &rarr; Azure Blob Ingest &rarr; Staging Schema<br/>
+          &rarr; SCD Type 2 Dimension Tables &rarr; Star Schema Fact Tables<br/>
+          &rarr; Materialized Views &rarr; Power BI Incremental Refresh
+        </div>
+        <button onclick="toggleDD('dd1')" id="btn-dd1" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
+          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; SCD Type 2, Indexing &amp; Materialized Views
+          </span>
+          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="deep-dive-content" id="dd1">
+          <div class="pt-6 space-y-8">
+            <div>
+              <h4 class="text-white font-semibold mb-1">1. SCD Type 2 MERGE with Hash-Based Change Detection</h4>
+              <p class="text-gray-500 text-sm mb-3">Track historical changes to dimension records without losing prior state. A filtered index on <code class="text-cobalt-300 font-mono text-xs">is_current=1</code> makes live-record lookups microsecond-fast.</p>
+              <div class="code-block"><span class="cm">-- SCD Type 2: Customer Dimension with effective dating</span>
+<span class="kw">CREATE TABLE</span> dim_customer (
+    customer_sk      <span class="tp">BIGINT</span>      <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>) <span class="kw">PRIMARY KEY</span>,
+    customer_bk      <span class="tp">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT NULL</span>,
+    customer_name    <span class="tp">VARCHAR</span>(<span class="num">200</span>),
+    customer_segment <span class="tp">VARCHAR</span>(<span class="num">50</span>),
+    region           <span class="tp">VARCHAR</span>(<span class="num">100</span>),
+    effective_from   <span class="tp">DATE</span>        <span class="kw">NOT NULL</span>,
+    effective_to     <span class="tp">DATE</span>        <span class="kw">DEFAULT</span> <span class="str">'9999-12-31'</span>,
+    is_current       <span class="tp">BIT</span>         <span class="kw">DEFAULT</span> <span class="num">1</span>,
+    row_hash         <span class="tp">BINARY</span>(<span class="num">32</span>)   <span class="cm">-- SHA2 hash for change detection</span>
+);
+
+<span class="cm">-- Clustered index: business key + effective date (range scans)</span>
+<span class="kw">CREATE CLUSTERED INDEX</span> cidx_cust_bk_eff
+    <span class="kw">ON</span> dim_customer (customer_bk, effective_from);
+
+<span class="cm">-- Filtered non-clustered: only live rows (current-record lookups)</span>
+<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_cust_current
+    <span class="kw">ON</span> dim_customer (customer_bk)
+    <span class="kw">INCLUDE</span> (customer_sk, customer_name, region)
+    <span class="kw">WHERE</span> is_current = <span class="num">1</span>;
+
+<span class="cm">-- SCD Type 2 MERGE: expire changed rows, insert new versions</span>
+<span class="kw">MERGE INTO</span> dim_customer <span class="kw">AS</span> tgt
+<span class="kw">USING</span> (
+    <span class="kw">SELECT</span> s.customer_bk, s.customer_name, s.customer_segment, s.region,
+           <span class="fn">HASHBYTES</span>(<span class="str">'SHA2_256'</span>,
+               <span class="fn">COALESCE</span>(s.customer_name,<span class="str">''</span>) + <span class="fn">COALESCE</span>(s.customer_segment,<span class="str">''</span>)
+               + <span class="fn">COALESCE</span>(s.region,<span class="str">''</span>)) <span class="kw">AS</span> row_hash
+    <span class="kw">FROM</span> stg_customer s
+) <span class="kw">AS</span> src <span class="kw">ON</span> tgt.customer_bk = src.customer_bk <span class="kw">AND</span> tgt.is_current = <span class="num">1</span>
+<span class="kw">WHEN MATCHED AND</span> tgt.row_hash <> src.row_hash <span class="kw">THEN</span>
+    <span class="kw">UPDATE SET</span> tgt.effective_to = <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>) - <span class="num">1</span>, tgt.is_current = <span class="num">0</span>
+<span class="kw">WHEN NOT MATCHED THEN</span>
+    <span class="kw">INSERT</span> (customer_bk, customer_name, customer_segment, region,
+             effective_from, row_hash)
+    <span class="kw">VALUES</span> (src.customer_bk, src.customer_name, src.customer_segment,
+             src.region, <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>), src.row_hash);</div>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">2. Partitioned Fact Table + Materialized View for Power BI</h4>
+              <p class="text-gray-500 text-sm mb-3">Monthly range partition + aligned columnstore index. A distributed materialized view pre-aggregates revenue so Power BI refreshes only the current partition slice.</p>
+              <div class="code-block"><span class="cm">-- Monthly partition scheme for incremental Power BI refresh</span>
+<span class="kw">CREATE PARTITION FUNCTION</span> pf_monthly (<span class="tp">DATE</span>)
+<span class="kw">AS RANGE RIGHT FOR VALUES</span> (<span class="str">'2023-01-01'</span>,<span class="str">'2023-02-01'</span>,<span class="str">'2023-03-01'</span>,
+    <span class="str">'2023-04-01'</span>,<span class="str">'2023-05-01'</span>,<span class="str">'2023-06-01'</span>,<span class="str">'2023-07-01'</span>,
+    <span class="str">'2023-08-01'</span>,<span class="str">'2023-09-01'</span>,<span class="str">'2023-10-01'</span>,<span class="str">'2023-11-01'</span>,<span class="str">'2023-12-01'</span>);
+
+<span class="kw">CREATE PARTITION SCHEME</span> ps_monthly
+<span class="kw">AS PARTITION</span> pf_monthly <span class="kw">ALL TO</span> ([PRIMARY]);
+
+<span class="cm">-- Fact table partitioned by sale_date</span>
+<span class="kw">CREATE TABLE</span> fact_sales (
+    sale_sk     <span class="tp">BIGINT</span>         <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>),
+    sale_date   <span class="tp">DATE</span>           <span class="kw">NOT NULL</span>,
+    customer_sk <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
+    product_sk  <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
+    store_sk    <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
+    revenue     <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">2</span>),
+    units_sold  <span class="tp">INT</span>
+) <span class="kw">ON</span> ps_monthly(sale_date);
+
+<span class="kw">CREATE CLUSTERED COLUMNSTORE INDEX</span> cci_fact_sales
+    <span class="kw">ON</span> fact_sales <span class="kw">ON</span> ps_monthly(sale_date);
+
+<span class="cm">-- Materialized view: monthly revenue pre-aggregated for DirectQuery</span>
+<span class="kw">CREATE MATERIALIZED VIEW</span> mv_monthly_revenue
+<span class="kw">WITH</span> (DISTRIBUTION = <span class="fn">HASH</span>(store_sk)) <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+    <span class="fn">DATEFROMPARTS</span>(<span class="fn">YEAR</span>(f.sale_date), <span class="fn">MONTH</span>(f.sale_date), <span class="num">1</span>) <span class="kw">AS</span> month_start,
+    d.region, p.category,
+    <span class="fn">SUM</span>(f.revenue)                       <span class="kw">AS</span> total_revenue,
+    <span class="fn">SUM</span>(f.units_sold)                    <span class="kw">AS</span> total_units,
+    <span class="fn">COUNT_BIG</span>(<span class="kw">DISTINCT</span> f.customer_sk)    <span class="kw">AS</span> unique_customers
+<span class="kw">FROM</span>  fact_sales   f
+<span class="kw">JOIN</span>  dim_customer d <span class="kw">ON</span> f.customer_sk = d.customer_sk <span class="kw">AND</span> d.is_current = <span class="num">1</span>
+<span class="kw">JOIN</span>  dim_product  p <span class="kw">ON</span> f.product_sk  = p.product_sk
+<span class="kw">GROUP BY</span> <span class="fn">DATEFROMPARTS</span>(<span class="fn">YEAR</span>(f.sale_date),<span class="fn">MONTH</span>(f.sale_date),<span class="num">1</span>), d.region, p.category;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
+      <div class="p-8 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 02</span>
+              <span class="text-xs text-gray-500">Insurance / Lakehouse</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Insurance-Ghost</h3>
+            <p class="text-cobalt-400 font-medium">Scalable Medallion Lakehouse</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag text-xs px-2 py-1 rounded">Medallion Architecture</span>
+            <span class="tag text-xs px-2 py-1 rounded">Delta Lake</span>
+            <span class="tag text-xs px-2 py-1 rounded">Window Functions</span>
+            <span class="tag text-xs px-2 py-1 rounded">Z-Order Indexing</span>
+          </div>
+        </div>
+        <p class="text-gray-400 leading-relaxed mb-6">Designed a full Bronze / Silver / Gold Medallion Architecture on Databricks + Azure Data Lake Gen2 for a high-volume synthetic insurance dataset. The Gold layer exposes risk-scoring analytics via RANK and LAG window functions, enabling claims pattern detection <span class="text-white font-medium">12&times; faster than the prior flat-table approach</span>.</p>
+        <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
+          <p class="text-cobalt-500/70 mb-2">[ Medallion Architecture ]</p>
+          Raw JSON/CSV &rarr; <span class="text-gray-400">Bronze</span> (raw, full history)<br/>
+          &rarr; <span class="text-gray-400">Silver</span> (cleaned: Policy + Claims + Customer joins)<br/>
+          &rarr; <span class="text-gray-400">Gold</span> (risk aggregates, RANK windows, serving layer)<br/>
+          Partitioned by Policy_Year &nbsp;&middot;&nbsp; Z-Order on Claim_ID + Policy_Number
+        </div>
+        <button onclick="toggleDD('dd2')" id="btn-dd2" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
+          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Z-Order, Partitioning &amp; Risk Window Functions
+          </span>
+          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="deep-dive-content" id="dd2">
+          <div class="pt-6 space-y-8">
+            <div>
+              <h4 class="text-white font-semibold mb-1">1. Delta Lake: Policy_Year Partitioning + Z-Order on Claim_ID</h4>
+              <p class="text-gray-500 text-sm mb-3">Horizontal partition by year eliminates full-table scans. Z-Order on (Claim_ID, Policy_Number) co-locates correlated rows so multi-table joins hit minimal files.</p>
+              <div class="code-block"><span class="cm"># PySpark: write Gold layer partitioned by Policy_Year</span>
+<span class="kw">from</span> pyspark.sql <span class="kw">import</span> functions <span class="kw">as</span> F
+
+gold_df = (
+    silver_claims_df
+    .<span class="fn">withColumn</span>(<span class="str">"Policy_Year"</span>, F.<span class="fn">year</span>(<span class="str">"policy_start_date"</span>))
+    .<span class="fn">withColumn</span>(<span class="str">"claim_amount"</span>, F.<span class="fn">coalesce</span>(F.<span class="fn">col</span>(<span class="str">"claim_amount"</span>), F.<span class="fn">lit</span>(<span class="num">0</span>)))
+)
+
+(gold_df.write
+  .<span class="fn">format</span>(<span class="str">"delta"</span>)
+  .<span class="fn">mode</span>(<span class="str">"overwrite"</span>)
+  .<span class="fn">option</span>(<span class="str">"overwriteSchema"</span>, <span class="str">"true"</span>)
+  .<span class="fn">partitionBy</span>(<span class="str">"Policy_Year"</span>)
+  .<span class="fn">save</span>(<span class="str">"abfss://gold@datalake.dfs.core.windows.net/insurance/claims"</span>)
+)
+
+<span class="cm">-- Z-Order: cluster Claim_ID + Policy_Number within each partition</span>
+<span class="kw">OPTIMIZE</span> gold.insurance_claims
+<span class="kw">ZORDER BY</span> (Claim_ID, Policy_Number);
+
+<span class="cm">-- Retain 7-day time-travel, purge stale files</span>
+<span class="kw">VACUUM</span> gold.insurance_claims <span class="kw">RETAIN</span> <span class="num">168</span> HOURS;</div>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">2. Risk Pattern Detection &mdash; RANK, LAG &amp; Running Totals</h4>
+              <p class="text-gray-500 text-sm mb-3">High-frequency claimant detection using LAG (days-between-claims), cumulative exposure totals, and per-year claim ranking to feed the actuarial risk model.</p>
+              <div class="code-block"><span class="kw">WITH</span> claim_timeline <span class="kw">AS</span> (
+    <span class="kw">SELECT</span>
+        c.customer_id, cl.claim_date, cl.claim_amount, cl.claim_type,
+        <span class="fn">DATEDIFF</span>(<span class="str">'day'</span>,
+            <span class="fn">LAG</span>(cl.claim_date) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> c.customer_id <span class="kw">ORDER BY</span> cl.claim_date),
+            cl.claim_date
+        )                                           <span class="kw">AS</span> days_since_prev_claim,
+        <span class="fn">SUM</span>(cl.claim_amount) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> c.customer_id
+            <span class="kw">ORDER BY</span>     cl.claim_date
+            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>
+        )                                           <span class="kw">AS</span> cumulative_exposure,
+        <span class="fn">DENSE_RANK</span>() <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> c.customer_id, <span class="fn">YEAR</span>(cl.claim_date)
+            <span class="kw">ORDER BY</span>     cl.claim_amount <span class="kw">DESC</span>
+        )                                           <span class="kw">AS</span> claim_rank_ytd
+    <span class="kw">FROM</span>  fact_claims   cl
+    <span class="kw">JOIN</span>  dim_customer  c  <span class="kw">ON</span> cl.customer_id   = c.customer_id
+    <span class="kw">JOIN</span>  dim_policy    p  <span class="kw">ON</span> cl.policy_number = p.policy_number
+    <span class="kw">JOIN</span>  dim_product   pr <span class="kw">ON</span> p.product_code   = pr.product_code
+    <span class="kw">WHERE</span> p.policy_year = <span class="fn">YEAR</span>(<span class="fn">CURRENT_DATE</span>()) - <span class="num">1</span>
+),
+risk_flags <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> *,
+        <span class="kw">CASE</span>
+            <span class="kw">WHEN</span> days_since_prev_claim &lt; <span class="num">30</span>     <span class="kw">THEN</span> <span class="str">'HIGH_FREQUENCY'</span>
+            <span class="kw">WHEN</span> cumulative_exposure   > <span class="num">500000</span>  <span class="kw">THEN</span> <span class="str">'HIGH_EXPOSURE'</span>
+            <span class="kw">WHEN</span> claim_rank_ytd = <span class="num">1</span>
+             <span class="kw">AND</span> claim_amount   > <span class="num">100000</span>  <span class="kw">THEN</span> <span class="str">'LARGE_SINGLE_CLAIM'</span>
+            <span class="kw">ELSE</span> <span class="str">'NORMAL'</span>
+        <span class="kw">END</span> <span class="kw">AS</span> risk_category
+    <span class="kw">FROM</span> claim_timeline
+)
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> risk_flags
+<span class="kw">WHERE</span>  risk_category <> <span class="str">'NORMAL'</span>
+<span class="kw">ORDER BY</span> cumulative_exposure <span class="kw">DESC</span>;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
+      <div class="p-8 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 03</span>
+              <span class="text-xs text-gray-500">Migration / Python + SQL</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Zenith-Migrator</h3>
+            <p class="text-cobalt-400 font-medium">Legacy SQL Server &rarr; Azure Data Lake</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag text-xs px-2 py-1 rounded">Python CLI</span>
+            <span class="tag text-xs px-2 py-1 rounded">Bulk Insert</span>
+            <span class="tag text-xs px-2 py-1 rounded">Checksum Audit</span>
+            <span class="tag text-xs px-2 py-1 rounded">Clustered Index</span>
+          </div>
+        </div>
+        <p class="text-gray-400 leading-relaxed mb-6">A production-grade Python CLI that orchestrates the full ETL lifecycle from legacy SQL Server 2012 to Azure Data Lake Gen2. Python handles pre-flight schema validation and checksum generation; SQL handles bulk loads and post-load clustered index rebuilds. Migrated <span class="text-white font-medium">1.4 million rows with automated 0% data-loss verification</span>.</p>
+        <button onclick="toggleDD('dd3')" id="btn-dd3" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
+          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Checksum Validation, Bulk Load &amp; Index Rebuild
+          </span>
+          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="deep-dive-content" id="dd3">
+          <div class="pt-6 space-y-8">
+            <div>
+              <h4 class="text-white font-semibold mb-1">1. Python Pre-Flight Validation CLI</h4>
+              <p class="text-gray-500 text-sm mb-3">Before a row moves, the migrator validates schemas match, computes source checksums, and aborts on mismatch &mdash; preventing silent data corruption.</p>
+              <div class="code-block"><span class="cm"># zenith_migrator/cli.py</span>
+<span class="kw">import</span> click, pyodbc
+<span class="kw">from</span> azure.storage.filedatalake <span class="kw">import</span> DataLakeServiceClient
+
+<span class="fn">@click.command</span>()
+<span class="fn">@click.option</span>(<span class="str">"--table"</span>,   required=<span class="kw">True</span>)
+<span class="fn">@click.option</span>(<span class="str">"--batch"</span>,   default=<span class="num">50000</span>)
+<span class="fn">@click.option</span>(<span class="str">"--dry-run"</span>, is_flag=<span class="kw">True</span>)
+<span class="kw">def</span> <span class="fn">migrate</span>(table, batch, dry_run):
+    <span class="str">"""Migrate a SQL Server table to ADLS with checksum audit."""</span>
+    schema_diff = <span class="fn">compare_schemas</span>(<span class="fn">get_source_schema</span>(table),
+                                   <span class="fn">get_target_schema</span>(table))
+    <span class="kw">if</span> schema_diff:
+        click.<span class="fn">echo</span>(<span class="str">f"Schema mismatch: {schema_diff}"</span>, err=<span class="kw">True</span>)
+        raise click.<span class="fn">Abort</span>()
+
+    src = <span class="fn">compute_checksum</span>(table, source=<span class="kw">True</span>)
+    click.<span class="fn">echo</span>(<span class="str">f"Source: {src['row_count']:,} rows | hash={src['col_hash']}"</span>)
+
+    <span class="kw">if not</span> dry_run:
+        <span class="fn">bulk_migrate</span>(table, batch_size=batch)
+        tgt = <span class="fn">compute_checksum</span>(table, source=<span class="kw">False</span>)
+        <span class="kw">if</span> src[<span class="str">'row_count'</span>] != tgt[<span class="str">'row_count'</span>]:
+            raise <span class="fn">RuntimeError</span>(<span class="str">"DATA LOSS DETECTED"</span>)
+        click.<span class="fn">echo</span>(<span class="str">f"Verified: {tgt['row_count']:,} rows | 0% data loss"</span>)
+
+<span class="kw">def</span> <span class="fn">compute_checksum</span>(table, source=<span class="kw">True</span>):
+    query = <span class="str">f"""
+        SELECT COUNT(*)             AS row_count,
+               CHECKSUM_AGG(CHECKSUM(*)) AS col_hash
+        FROM   [{table}] WITH (NOLOCK)
+    """</span>
+    <span class="kw">with</span> (<span class="fn">get_src_conn</span>() <span class="kw">if</span> source <span class="kw">else</span> <span class="fn">get_tgt_conn</span>()) <span class="kw">as</span> conn:
+        r = conn.<span class="fn">execute</span>(query).<span class="fn">fetchone</span>()
+        <span class="kw">return</span> {<span class="str">"row_count"</span>: r[<span class="num">0</span>], <span class="str">"col_hash"</span>: r[<span class="num">1</span>]}</div>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">2. Bulk Load + Post-Load Clustered Index</h4>
+              <p class="text-gray-500 text-sm mb-3">Indexes are intentionally dropped before bulk insert (minimally logged) and rebuilt after &mdash; the correct sequence for maximum throughput on large row sets.</p>
+              <div class="code-block"><span class="cm">-- Drop index before bulk load (enables minimal logging)</span>
+<span class="kw">IF EXISTS</span> (<span class="kw">SELECT</span> <span class="num">1</span> <span class="kw">FROM</span> sys.indexes
+           <span class="kw">WHERE</span> object_id = <span class="fn">OBJECT_ID</span>(<span class="str">'dbo.migration_staging'</span>)
+           <span class="kw">AND</span>   name      = <span class="str">'cidx_staging_pk'</span>)
+    <span class="kw">DROP INDEX</span> cidx_staging_pk <span class="kw">ON</span> dbo.migration_staging;
+
+<span class="cm">-- Bulk load with TABLOCK for minimal logging</span>
+<span class="kw">BULK INSERT</span> dbo.migration_staging
+<span class="kw">FROM</span> <span class="str">'\\staging\export\orders_001.csv'</span>
+<span class="kw">WITH</span> (
+    FIELDTERMINATOR = <span class="str">','</span>, ROWTERMINATOR = <span class="str">'\n'</span>,
+    FIRSTROW        = <span class="num">2</span>,   BATCHSIZE      = <span class="num">50000</span>,
+    TABLOCK, CHECK_CONSTRAINTS, FIRE_TRIGGERS
+);
+
+<span class="cm">-- Rebuild clustered index after all batches complete</span>
+<span class="kw">CREATE CLUSTERED INDEX</span> cidx_staging_pk
+    <span class="kw">ON</span> dbo.migration_staging (order_id)
+    <span class="kw">WITH</span> (SORT_IN_TEMPDB = <span class="kw">ON</span>, FILLFACTOR = <span class="num">90</span>, ONLINE = <span class="kw">OFF</span>);
+
+<span class="cm">-- Non-clustered covering index for query patterns</span>
+<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_staging_cust_date
+    <span class="kw">ON</span> dbo.migration_staging (customer_id, order_date)
+    <span class="kw">INCLUDE</span> (order_total, status)
+    <span class="kw">WITH</span> (FILLFACTOR = <span class="num">85</span>, ONLINE = <span class="kw">OFF</span>);
+
+<span class="cm">-- Row-count integrity guard</span>
+<span class="kw">DECLARE</span> @src <span class="tp">BIGINT</span> = <span class="num">1412847</span>;
+<span class="kw">DECLARE</span> @tgt <span class="tp">BIGINT</span> = (<span class="kw">SELECT</span> <span class="fn">COUNT_BIG</span>(*) <span class="kw">FROM</span> dbo.migration_staging <span class="kw">WITH</span>(NOLOCK));
+<span class="kw">IF</span> @src <> @tgt
+    <span class="kw">THROW</span> <span class="num">50001</span>, <span class="str">'DATA LOSS: row count mismatch post-migration.'</span>, <span class="num">1</span>;
+<span class="kw">PRINT</span> <span class="str">'Migration audit PASSED — zero data loss confirmed.'</span>;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
+      <div class="p-8 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 04</span>
+              <span class="text-xs text-gray-500">FinTech / Time-Series</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Chaos Arbitrageur</h3>
+            <p class="text-cobalt-400 font-medium">Trading Signal Engine</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag text-xs px-2 py-1 rounded">Time-Series SQL</span>
+            <span class="tag text-xs px-2 py-1 rounded">Sliding Windows</span>
+            <span class="tag text-xs px-2 py-1 rounded">Composite Index</span>
+            <span class="tag text-xs px-2 py-1 rounded">VWAP / Volatility</span>
+          </div>
+        </div>
+        <p class="text-gray-400 leading-relaxed mb-6">Real-time financial event processing pipeline. Ingests tick-level market data and computes moving averages, volatility metrics, and cross-asset signals using sliding window SQL. A composite index on <code class="text-cobalt-300 font-mono text-xs">(Ticker, Timestamp)</code> enables <span class="text-white font-medium">sub-second signal retrieval</span> across millions of daily events.</p>
+        <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
+          <p class="text-cobalt-500/70 mb-2">[ Architecture Diagram Placeholder &mdash; Chaos Arbitrageur ]</p>
+          Market Feed API &rarr; Kafka Ingest &rarr; Bronze (raw ticks)<br/>
+          &rarr; Silver (OHLCV normalised) &rarr; Gold (signals, moving avgs, VWAP)<br/>
+          &rarr; Composite Index (Ticker, Timestamp) &rarr; Sub-second Query Layer<br/>
+          &rarr; Signal Dashboard / Webhook Alerts
+        </div>
+        <button onclick="toggleDD('dd4')" id="btn-dd4" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
+          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Composite Indexing &amp; Sliding Window Analysis
+          </span>
+          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="deep-dive-content" id="dd4">
+          <div class="pt-6 space-y-8">
+            <div>
+              <h4 class="text-white font-semibold mb-1">1. Composite Index Design &mdash; Sub-Second Signal Retrieval</h4>
+              <p class="text-gray-500 text-sm mb-3">All query patterns are ticker-first with a time range. The composite clustered index on (ticker, trade_ts) guarantees index seeks, not scans, at any scale.</p>
+              <div class="code-block"><span class="cm">-- Partitioned tick table, composite cluster key</span>
+<span class="kw">CREATE TABLE</span> market_ticks (
+    tick_id     <span class="tp">BIGINT</span>        <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>),
+    ticker      <span class="tp">VARCHAR</span>(<span class="num">10</span>)   <span class="kw">NOT NULL</span>,
+    trade_ts    <span class="tp">DATETIME2</span>(<span class="num">6</span>) <span class="kw">NOT NULL</span>,
+    open_price  <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
+    high_price  <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
+    low_price   <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
+    close_price <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
+    volume      <span class="tp">BIGINT</span>,
+    trade_date  <span class="tp">DATE</span>          <span class="kw">NOT NULL</span>
+) <span class="kw">ON</span> ps_trade_daily(trade_date);
+
+<span class="cm">-- Clustered composite: ticker first, then timestamp</span>
+<span class="kw">CREATE CLUSTERED INDEX</span> cidx_ticks_ticker_ts
+    <span class="kw">ON</span> market_ticks (ticker <span class="kw">ASC</span>, trade_ts <span class="kw">ASC</span>);
+
+<span class="cm">-- Covering NCCI: OHLCV on the same key avoids key lookups</span>
+<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_ticks_ohlcv
+    <span class="kw">ON</span> market_ticks (ticker, trade_ts)
+    <span class="kw">INCLUDE</span> (open_price, high_price, low_price, close_price, volume)
+    <span class="kw">WITH</span> (FILLFACTOR = <span class="num">80</span>);</div>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold mb-1">2. Sliding Window &mdash; SMA, Volatility &amp; VWAP</h4>
+              <p class="text-gray-500 text-sm mb-3">SMA-5, SMA-30, rolling standard deviation (volatility), VWAP, and Golden/Death Cross detection all in a single CTE chain &mdash; no application-layer computation needed.</p>
+              <div class="code-block"><span class="kw">WITH</span> price_base <span class="kw">AS</span> (
+    <span class="kw">SELECT</span>
+        ticker, trade_ts, trade_date, close_price, volume,
+        <span class="fn">AVG</span>(close_price) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
+            <span class="kw">ROWS BETWEEN</span> <span class="num">4</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
+        ) <span class="kw">AS</span> sma_5,
+        <span class="fn">AVG</span>(close_price) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
+            <span class="kw">ROWS BETWEEN</span> <span class="num">29</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
+        ) <span class="kw">AS</span> sma_30,
+        <span class="fn">STDEVP</span>(close_price) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
+            <span class="kw">ROWS BETWEEN</span> <span class="num">29</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
+        ) <span class="kw">AS</span> volatility_30,
+        <span class="fn">SUM</span>(close_price * volume) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> ticker, trade_date
+            <span class="kw">ORDER BY</span>     trade_ts
+            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>
+        ) / <span class="fn">NULLIF</span>(<span class="fn">SUM</span>(volume) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> ticker, trade_date
+            <span class="kw">ORDER BY</span>     trade_ts
+            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>), <span class="num">0</span>
+        )                         <span class="kw">AS</span> vwap,
+        (close_price - <span class="fn">LAG</span>(close_price,<span class="num">1</span>) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts))
+        / <span class="fn">NULLIF</span>(<span class="fn">LAG</span>(close_price,<span class="num">1</span>) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts),<span class="num">0</span>)
+                                  <span class="kw">AS</span> pct_return
+    <span class="kw">FROM</span> market_ticks
+    <span class="kw">WHERE</span> trade_date >= <span class="fn">DATEADD</span>(day,-<span class="num">90</span>,<span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>))
+),
+signals <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> *,
+        <span class="kw">CASE</span>
+            <span class="kw">WHEN</span> sma_5 > sma_30
+             <span class="kw">AND</span> <span class="fn">LAG</span>(sma_5)  <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
+              <= <span class="fn">LAG</span>(sma_30) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
+                <span class="kw">THEN</span> <span class="str">'GOLDEN_CROSS'</span>
+            <span class="kw">WHEN</span> sma_5 < sma_30
+             <span class="kw">AND</span> <span class="fn">LAG</span>(sma_5)  <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
+              >= <span class="fn">LAG</span>(sma_30) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
+                <span class="kw">THEN</span> <span class="str">'DEATH_CROSS'</span>
+        <span class="kw">END</span> <span class="kw">AS</span> signal
+    <span class="kw">FROM</span> price_base
+)
+<span class="kw">SELECT</span> ticker, trade_ts, close_price,
+       <span class="fn">ROUND</span>(sma_5,<span class="num">4</span>) <span class="kw">AS</span> sma_5, <span class="fn">ROUND</span>(sma_30,<span class="num">4</span>) <span class="kw">AS</span> sma_30,
+       <span class="fn">ROUND</span>(volatility_30,<span class="num">6</span>) <span class="kw">AS</span> volatility, <span class="fn">ROUND</span>(vwap,<span class="num">4</span>) <span class="kw">AS</span> vwap,
+       <span class="fn">ROUND</span>(pct_return*<span class="num">100</span>,<span class="num">4</span>) <span class="kw">AS</span> pct_return, signal
+<span class="kw">FROM</span>  signals
+<span class="kw">WHERE</span> signal <span class="kw">IS NOT NULL</span>
+<span class="kw">ORDER BY</span> trade_ts <span class="kw">DESC</span>;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /projects container -->
+</section>
+
+<!-- ══ CONSULTING ══ -->
+<section id="consulting" class="py-24 px-6 bg-navy-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-16">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Consulting Experience</p>
+      <h2 class="text-4xl font-bold mb-4">Enterprise Engagements<br/><span class="blue-text">Real Business Impact</span></h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-sm">Described using industry-level terminology to respect client NDAs. Sectors and outcomes are accurate.</p>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-8">
+
+      <!-- Decision Inc -->
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-8 hover:border-cobalt-600 transition-colors">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <h3 class="text-xl font-bold text-white">Decision Inc.</h3>
+            <p class="text-cobalt-400 text-sm font-medium">Analytics Consulting Firm &middot; Johannesburg</p>
+          </div>
+          <span class="text-xs text-gray-500 font-mono border border-navy-600 px-2 py-1 rounded">Retail / FMCG</span>
+        </div>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">Semantic Layer Redesign</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Rebuilt a legacy SSAS cube into a modern star schema on Azure Synapse for a large retail client. Introduced SCD Type 2 across all slowly-changing dimensions, eliminating aggregation inconsistencies in monthly management reporting packs.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">Power BI Performance Engineering</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Applied partition-aligned materialized views and incremental refresh policies, reducing 30-minute daily refresh cycles to under 4 minutes &mdash; a <span class="text-white font-medium">7.5&times; improvement</span> by restricting refreshes to the most recently modified partition.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">ETL Governance Framework</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Built row-level audit tables, CHECKSUM_AGG validation, and data lineage tagging across 14 ADF pipelines. Zero pipeline failures in the 3 months post-implementation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-navy-700 flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">Azure Synapse</span>
+          <span class="tag text-xs px-2 py-1 rounded">Power BI</span>
+          <span class="tag text-xs px-2 py-1 rounded">ADF</span>
+          <span class="tag text-xs px-2 py-1 rounded">SQL Server</span>
+          <span class="tag text-xs px-2 py-1 rounded">SCD Type 2</span>
+        </div>
+      </div>
+
+      <!-- PBT Group -->
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-8 hover:border-cobalt-600 transition-colors">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <h3 class="text-xl font-bold text-white">PBT Group</h3>
+            <p class="text-cobalt-400 text-sm font-medium">Data &amp; Analytics Specialists &middot; SA</p>
+          </div>
+          <span class="text-xs text-gray-500 font-mono border border-navy-600 px-2 py-1 rounded">Insurance / FSI</span>
+        </div>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">Lakehouse Migration (Insurance)</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Led the design of a Medallion Architecture migration for an insurance client, moving from on-prem Oracle to Azure Data Lake Gen2 + Databricks. Defined Bronze/Silver/Gold zone schemas and all ingestion patterns.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">Claims Analytics Engineering</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Implemented window-function risk scoring (RANK, LEAD/LAG) in Databricks SQL to support an actuarial team. Reduced time-to-insight from weekly batch reports to <span class="text-white font-medium">near-real-time dashboards</span>.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full bg-cobalt-500 mt-1.5"></div>
+            <div>
+              <h4 class="text-white text-sm font-semibold mb-1">Data Quality Framework</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Built a Python profiling &amp; validation suite (Great Expectations), enforcing schema contracts at the Silver layer boundary. Caught 23 upstream schema breaks before they propagated to Gold.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-navy-700 flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">Databricks</span>
+          <span class="tag text-xs px-2 py-1 rounded">Delta Lake</span>
+          <span class="tag text-xs px-2 py-1 rounded">Python</span>
+          <span class="tag text-xs px-2 py-1 rounded">Oracle &rarr; Azure</span>
+          <span class="tag text-xs px-2 py-1 rounded">Great Expectations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legacy Modernisation Hook -->
+    <div class="reveal mt-12 relative overflow-hidden rounded-xl p-8 md:p-12 text-center" style="background:linear-gradient(135deg,#0d1424 0%,#111b30 50%,#0d1424 100%);border:1px solid rgba(46,91,255,.3)">
+      <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(46,91,255,.07)0%,transparent 70%)"></div>
+      <div class="relative z-10">
+        <p class="text-cobalt-400 font-mono text-xs tracking-widest uppercase mb-3">// High-Demand Niche &middot; South Africa</p>
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Legacy Modernisation Specialist</h3>
+        <p class="text-gray-400 leading-relaxed max-w-2xl mx-auto mb-5">South African banking, retail, and insurance enterprises are sitting on decades of technical debt: Oracle environments, SSAS cubes, flat-file ETL, and fragile SSIS packages. There is a growing &mdash; and largely unmet &mdash; demand for engineers who can <span class="text-white font-medium">speak both the legacy language and the cloud future</span>.</p>
+        <p class="text-gray-400 leading-relaxed max-w-2xl mx-auto">I bridge that gap: legacy stack fluency for safe migrations, cloud architecture knowledge for building something worth migrating <em>to</em>. That combination &mdash; <span class="text-cobalt-400 font-semibold">legacy fluency + modern lakehouse architecture</span> &mdash; is the niche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="reveal">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Let&apos;s Build</p>
+      <h2 class="text-4xl font-bold mb-6">Ready to Architect<br/><span class="blue-text">Your Data Platform?</span></h2>
+      <p class="text-gray-400 leading-relaxed mb-10 max-w-xl mx-auto">Whether you need a lakehouse built from scratch, a legacy migration executed cleanly, or a senior engineer to close a technical gap &mdash; let&apos;s talk.</p>
+      <div class="grid md:grid-cols-3 gap-4 mb-10">
+        <a href="mailto:thapelo@example.com" class="bg-navy-800 border border-navy-700 hover:border-cobalt-500 rounded-xl p-6 transition-colors group">
+          <div class="w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <svg class="w-5 h-5 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <p class="text-white text-sm font-semibold group-hover:text-cobalt-400 transition-colors">Email</p>
+          <p class="text-gray-500 text-xs mt-1">mthapelo907@gmail.com</p>
+        </a>
+        <a href="www.linkedin.com/in/thapelo-tshiamo-m-b3677b202" target="_blank" rel="noopener noreferrer" class="bg-navy-800 border border-navy-700 hover:border-cobalt-500 rounded-xl p-6 transition-colors group">
+          <div class="w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <svg class="w-5 h-5 text-cobalt-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </div>
+          <p class="text-white text-sm font-semibold group-hover:text-cobalt-400 transition-colors">LinkedIn</p>
+          <p class="text-gray-500 text-xs mt-1">thapelo-moloto</p>
+        </a>
+        <a href="https://github.com/TshiamoTLM" target="_blank" rel="noopener noreferrer" class="bg-navy-800 border border-navy-700 hover:border-cobalt-500 rounded-xl p-6 transition-colors group">
+          <div class="w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background:rgba(46,91,255,.15);border:1px solid rgba(46,91,255,.3)">
+            <svg class="w-5 h-5 text-cobalt-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <p class="text-white text-sm font-semibold group-hover:text-cobalt-400 transition-colors">GitHub</p>
+          <p class="text-gray-500 text-xs mt-1">thapelo-moloto</p>
+        </a>
+      </div>
+      <div class="inline-flex items-center gap-2 bg-navy-800 border border-navy-700 rounded-full px-6 py-2 text-xs text-gray-500 font-mono">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Based in Johannesburg, SA &nbsp;&middot;&nbsp; Available for remote &amp; on-site contracts
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="border-t border-navy-700 py-8 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-gray-600 text-xs font-mono">
+    <p>&copy; 2026 Thapelo Moloto &middot; All rights reserved</p>
+    <div class="flex items-center gap-2">
+      <span class="text-cobalt-700">TM</span>
+      <span>&middot; Data Engineer &middot; DP-203 &middot; Databricks &middot; Microsoft Fabric</span>
+    </div>
+    <p>Johannesburg, South Africa</p>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+  // Mobile menu
+  document.getElementById('mob-btn').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mob-menu a').forEach(l =>
+    l.addEventListener('click', () => document.getElementById('mob-menu').classList.add('hidden'))
+  );
+
+  // Deep dive collapsible
+  function toggleDD(id) {
+    const el  = document.getElementById(id);
+    const btn = document.getElementById('btn-' + id);
+    const open = el.classList.contains('open');
+    el.classList.toggle('open', !open);
+    btn.classList.toggle('open', !open);
+  }
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Active nav highlight
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('nav .nav-link');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.getAttribute('id');
+        navLinks.forEach(l => {
+          l.classList.remove('text-cobalt-400');
+          l.classList.add('text-gray-400');
+          if (l.getAttribute('href') === '#' + id) {
+            l.classList.remove('text-gray-400');
+            l.classList.add('text-cobalt-400');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
