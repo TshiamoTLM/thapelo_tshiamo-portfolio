@@ -26,8 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{color-scheme:dark}
+    :root{color-scheme:dark;--nav-offset:96px}
     html{background:#0a0e17}
+    section[id]{scroll-margin-top:var(--nav-offset)}
     ::-webkit-scrollbar{width:4px}
     ::-webkit-scrollbar-track{background:#0a0e17}
     ::-webkit-scrollbar-thumb{background:#2E5BFF;border-radius:2px}
@@ -46,8 +47,8 @@
     .nav-link:hover::after{width:100%}
     .project-card{border:1px solid #162240;transition:border-color .3s,transform .3s,box-shadow .3s}
     .project-card:hover{border-color:#2E5BFF;transform:translateY(-4px);box-shadow:0 20px 48px rgba(46,91,255,.12)}
-    .deep-dive-content{max-height:0;overflow:hidden;transition:max-height .6s ease}
-    .deep-dive-content.open{max-height:3200px}
+    .deep-dive-content{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .25s ease}
+    .deep-dive-content.open{opacity:1}
     .toggle-btn svg{transition:transform .3s}
     .toggle-btn.open svg{transform:rotate(180deg)}
     .tag{background:rgba(46,91,255,.1);border:1px solid rgba(46,91,255,.28);color:#7eb3ff}
@@ -55,6 +56,13 @@
     .cert-card:hover{border-color:#2E5BFF;box-shadow:0 0 28px rgba(46,91,255,.15)}
     .btn-primary{background:linear-gradient(135deg,#2E5BFF 0%,#1a3fd4 100%);transition:opacity .2s,box-shadow .2s}
     .btn-primary:hover{opacity:.88;box-shadow:0 8px 28px rgba(46,91,255,.38)}
+    a:focus-visible,button:focus-visible{outline:2px solid #4d90fe;outline-offset:2px;border-radius:.4rem}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal,.project-card,.cert-card,.toggle-btn svg,.nav-link::after,.btn-primary{transition:none !important}
+      .reveal{opacity:1;transform:none}
+      .deep-dive-content{transition:none}
+    }
   </style>
 </head>
 <body class="bg-navy-900 text-white font-sans antialiased">
@@ -76,7 +84,7 @@
       <a href="#contact"    class="nav-link hover:text-white">Contact</a>
     </div>
     <a href="#contact" class="hidden md:inline-flex btn-primary text-white font-semibold text-xs px-5 py-2.5 rounded-lg uppercase tracking-wider">Hire Me</a>
-    <button id="mob-btn" class="md:hidden text-gray-400 hover:text-cobalt-400 p-1">
+    <button id="mob-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu" class="md:hidden text-gray-400 hover:text-cobalt-400 p-1">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
@@ -102,7 +110,7 @@
   <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
     <div class="inline-flex items-center gap-2 bg-navy-800 border border-navy-600 rounded-full px-4 py-1.5 mb-8 text-xs text-gray-400 font-mono">
       <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-      Available for  data engineering &amp; lakehouse architecture contracts
+      Available for data engineering &amp; lakehouse architecture contracts
     </div>
     <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-4 leading-tight">
       <span class="blue-text">Thapelo Tshiamo</span><br/><span class="text-white">Moloto</span>
@@ -390,7 +398,7 @@
           5) Semantic Layer &rarr; Power BI model with governed KPI definitions
         </div>
 
-        <button onclick="toggleDD('dd1')" id="btn-dd1" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
+        <button onclick="toggleDD('dd1')" id="btn-dd1" aria-controls="dd1" aria-expanded="false" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
           <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
             <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Implementation (incremental SQL + quality gate)
           </span>
@@ -696,29 +704,71 @@
 <!-- ══ SCRIPTS ══ -->
 <script>
   // Mobile menu
-  document.getElementById('mob-btn').addEventListener('click', () => {
-    document.getElementById('mob-menu').classList.toggle('hidden');
+  const mobBtn = document.getElementById('mob-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  mobBtn.addEventListener('click', () => {
+    const isOpen = !mobMenu.classList.contains('hidden');
+    mobMenu.classList.toggle('hidden');
+    mobBtn.setAttribute('aria-expanded', String(!isOpen));
   });
   document.querySelectorAll('#mob-menu a').forEach(l =>
-    l.addEventListener('click', () => document.getElementById('mob-menu').classList.add('hidden'))
+    l.addEventListener('click', () => {
+      mobMenu.classList.add('hidden');
+      mobBtn.setAttribute('aria-expanded', 'false');
+    })
   );
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      mobMenu.classList.add('hidden');
+      mobBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   // Deep dive collapsible
   function toggleDD(id) {
-    const el  = document.getElementById(id);
+    const el = document.getElementById(id);
     const btn = document.getElementById('btn-' + id);
     const open = el.classList.contains('open');
-    el.classList.toggle('open', !open);
-    btn.classList.toggle('open', !open);
+
+    document.querySelectorAll('.deep-dive-content.open').forEach((panel) => {
+      if (panel.id !== id) {
+        panel.classList.remove('open');
+        panel.style.maxHeight = '0px';
+        const panelBtn = document.getElementById('btn-' + panel.id);
+        if (panelBtn) {
+          panelBtn.classList.remove('open');
+          panelBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+
+    if (open) {
+      el.classList.remove('open');
+      el.style.maxHeight = '0px';
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    el.classList.add('open');
+    el.style.maxHeight = el.scrollHeight + 'px';
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
   }
 
   // Scroll reveal
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
 
   // Active nav highlight
   const sections  = document.querySelectorAll('section[id]');
