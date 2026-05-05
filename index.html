@@ -67,6 +67,7 @@
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
       <a href="#about"      class="nav-link hover:text-white">About</a>
+      <a href="#technical-anchor" class="nav-link hover:text-white">Production</a>
       <a href="#certs"      class="nav-link hover:text-white">Certs</a>
       <a href="#skills"     class="nav-link hover:text-white">Skills</a>
       <a href="#projects"   class="nav-link hover:text-white">Projects</a>
@@ -80,6 +81,7 @@
   </div>
   <div id="mob-menu" class="hidden md:hidden border-t border-navy-700 px-6 py-4 space-y-3 text-sm text-gray-400">
     <a href="#about"      class="block hover:text-cobalt-400">About</a>
+    <a href="#technical-anchor" class="block hover:text-cobalt-400">Production</a>
     <a href="#certs"      class="block hover:text-cobalt-400">Certs</a>
     <a href="#skills"     class="block hover:text-cobalt-400">Skills</a>
     <a href="#projects"   class="block hover:text-cobalt-400">Projects</a>
@@ -155,6 +157,52 @@
           <p class="text-4xl font-extrabold blue-text mb-1">5</p>
           <p class="text-gray-400 text-sm">Industry<br/>Certifications</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TECHNICAL ANCHOR ══ -->
+<section id="technical-anchor" class="py-24 px-6 bg-navy-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-14">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Production Readiness</p>
+      <h2 class="text-4xl font-bold mb-4">Technical Anchor<br/><span class="blue-text">How I Engineer in Production</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">These are the engineering signals I prioritise on real client workloads: reliability, performance, traceability, and maintainability.</p>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-6">
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">Pipeline Design</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>ELT-first patterns with clear Bronze, Silver, and Gold data boundaries.</li>
+          <li>Idempotent loads and restart-safe orchestration for failure recovery.</li>
+          <li>Schema contracts and data quality gates before downstream publish.</li>
+        </ul>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">SQL and Modeling Depth</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>Dimensional modeling with SCD handling and semantic consistency.</li>
+          <li>Window functions and staged aggregations for business logic clarity.</li>
+          <li>Indexing, partitioning, and query plans for sustained performance.</li>
+        </ul>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">Performance Engineering</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>Partition-aware processing and incremental refresh strategies.</li>
+          <li>Storage optimisation patterns including Delta maintenance routines.</li>
+          <li>Materialised and pre-compute layers where latency matters.</li>
+        </ul>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">Operational Reliability</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>Row-count and checksum reconciliation between source and target.</li>
+          <li>Load audit trails, lineage notes, and incident-friendly logging.</li>
+          <li>Runbook-oriented delivery so teams can support pipelines confidently.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -278,468 +326,112 @@
   <div class="max-w-6xl mx-auto">
     <div class="reveal text-center mb-16">
       <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Featured Projects</p>
-      <h2 class="text-4xl font-bold mb-4">Engineering Work<br/><span class="blue-text">Built to Scale</span></h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Each project includes a Technical Deep Dive with real SQL architecture. No tutorials, no SELECT * examples.</p>
+      <h2 class="text-4xl font-bold mb-4">Proof of Execution<br/><span class="blue-text">Systems I Have Built</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Each project is presented using Problem, Approach, Tools, and Outcome so technical depth is clear to hiring managers and contract stakeholders.</p>
     </div>
-
-    <!-- PROJECT 1 -->
     <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
       <div class="p-8 md:p-10">
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+        <div class="flex items-center justify-between gap-4 mb-5">
           <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 01</span>
-              <span class="text-xs text-gray-500">Retail / BI</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white">Legacy to Modern BI</h3>
-            <p class="text-cobalt-400 font-medium">Semantic Layer Rebuild</p>
+            <p class="text-xs font-mono text-cobalt-400 mb-2">FLAGSHIP CASE STUDY</p>
+            <h3 class="text-2xl font-bold text-white">Legacy Retail Reporting to Production Lakehouse</h3>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag text-xs px-2 py-1 rounded">SCD Type 2</span>
-            <span class="tag text-xs px-2 py-1 rounded">Star Schema</span>
-            <span class="tag text-xs px-2 py-1 rounded">Materialized Views</span>
-            <span class="tag text-xs px-2 py-1 rounded">Power BI</span>
+          <span class="tag text-xs px-2 py-1 rounded">End-to-End Delivery</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Problem Statement</p>
+            <p class="text-gray-400 text-sm leading-relaxed">A retail reporting stack depended on CSV extracts and manual spreadsheet joins, with frequent reconciliation issues and slow month-end reporting.</p>
+          </div>
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Approach</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Designed ELT pipeline layers for ingestion, validation, dimensional modelling, and BI serving. Added data contracts, row-level quality checks, and controlled incremental processing.</p>
+          </div>
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Tools Used</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Azure Data Factory, Azure Data Lake Gen2, Synapse SQL, Power BI, Python for validation utilities, and SQL MERGE logic for SCD Type 2 dimensions.</p>
+          </div>
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Outcome / Impact</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Reporting moved from ad hoc files to a governed model with consistent KPI definitions, faster refresh cycles, and auditable data lineage for production support.</p>
           </div>
         </div>
-        <p class="text-gray-400 leading-relaxed mb-6">Migrated a mid-size retail business from flat-file CSV reporting to a fully normalised Star Schema on Azure Synapse. Rebuilt the semantic layer from scratch, achieving a <span class="text-white font-medium">72% reduction in Power BI refresh time</span> through incremental partition-based loads and materialised pre-aggregates.</p>
+
         <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
-          <p class="text-cobalt-500/70 mb-2">[ Data Flow ]</p>
-          CSV Flat Files &rarr; Azure Blob Ingest &rarr; Staging Schema<br/>
-          &rarr; SCD Type 2 Dimension Tables &rarr; Star Schema Fact Tables<br/>
-          &rarr; Materialized Views &rarr; Power BI Incremental Refresh
+          <p class="text-cobalt-500/70 mb-2">[ Architecture Flow ]</p>
+          Source Systems (POS + ERP + CSV) &rarr; ADF Ingestion &rarr; ADLS Bronze<br/>
+          &rarr; Synapse SQL Silver (validation, standardisation, dedupe)<br/>
+          &rarr; Star Schema Gold (facts + SCD dimensions + aggregates)<br/>
+          &rarr; Power BI Semantic Model &rarr; Executive and Operational Dashboards
         </div>
+
         <button onclick="toggleDD('dd1')" id="btn-dd1" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
           <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
-            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; SCD Type 2, Indexing &amp; Materialized Views
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Implementation Snippets (SCD merge + quality gate)
           </span>
           <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="deep-dive-content" id="dd1">
-          <div class="pt-6 space-y-8">
-            <div>
-              <h4 class="text-white font-semibold mb-1">1. SCD Type 2 MERGE with Hash-Based Change Detection</h4>
-              <p class="text-gray-500 text-sm mb-3">Track historical changes to dimension records without losing prior state. A filtered index on <code class="text-cobalt-300 font-mono text-xs">is_current=1</code> makes live-record lookups microsecond-fast.</p>
-              <div class="code-block"><span class="cm">-- SCD Type 2: Customer Dimension with effective dating</span>
-<span class="kw">CREATE TABLE</span> dim_customer (
-    customer_sk      <span class="tp">BIGINT</span>      <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>) <span class="kw">PRIMARY KEY</span>,
-    customer_bk      <span class="tp">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT NULL</span>,
-    customer_name    <span class="tp">VARCHAR</span>(<span class="num">200</span>),
-    customer_segment <span class="tp">VARCHAR</span>(<span class="num">50</span>),
-    region           <span class="tp">VARCHAR</span>(<span class="num">100</span>),
-    effective_from   <span class="tp">DATE</span>        <span class="kw">NOT NULL</span>,
-    effective_to     <span class="tp">DATE</span>        <span class="kw">DEFAULT</span> <span class="str">'9999-12-31'</span>,
-    is_current       <span class="tp">BIT</span>         <span class="kw">DEFAULT</span> <span class="num">1</span>,
-    row_hash         <span class="tp">BINARY</span>(<span class="num">32</span>)   <span class="cm">-- SHA2 hash for change detection</span>
-);
-
-<span class="cm">-- Clustered index: business key + effective date (range scans)</span>
-<span class="kw">CREATE CLUSTERED INDEX</span> cidx_cust_bk_eff
-    <span class="kw">ON</span> dim_customer (customer_bk, effective_from);
-
-<span class="cm">-- Filtered non-clustered: only live rows (current-record lookups)</span>
-<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_cust_current
-    <span class="kw">ON</span> dim_customer (customer_bk)
-    <span class="kw">INCLUDE</span> (customer_sk, customer_name, region)
-    <span class="kw">WHERE</span> is_current = <span class="num">1</span>;
-
-<span class="cm">-- SCD Type 2 MERGE: expire changed rows, insert new versions</span>
+          <div class="pt-6 grid md:grid-cols-2 gap-6">
+            <div class="code-block"><span class="cm">-- SCD Type 2 merge pattern (dimension history)</span>
 <span class="kw">MERGE INTO</span> dim_customer <span class="kw">AS</span> tgt
-<span class="kw">USING</span> (
-    <span class="kw">SELECT</span> s.customer_bk, s.customer_name, s.customer_segment, s.region,
-           <span class="fn">HASHBYTES</span>(<span class="str">'SHA2_256'</span>,
-               <span class="fn">COALESCE</span>(s.customer_name,<span class="str">''</span>) + <span class="fn">COALESCE</span>(s.customer_segment,<span class="str">''</span>)
-               + <span class="fn">COALESCE</span>(s.region,<span class="str">''</span>)) <span class="kw">AS</span> row_hash
-    <span class="kw">FROM</span> stg_customer s
-) <span class="kw">AS</span> src <span class="kw">ON</span> tgt.customer_bk = src.customer_bk <span class="kw">AND</span> tgt.is_current = <span class="num">1</span>
+<span class="kw">USING</span> stg_customer <span class="kw">AS</span> src
+<span class="kw">ON</span> tgt.customer_bk = src.customer_bk <span class="kw">AND</span> tgt.is_current = <span class="num">1</span>
 <span class="kw">WHEN MATCHED AND</span> tgt.row_hash <> src.row_hash <span class="kw">THEN</span>
-    <span class="kw">UPDATE SET</span> tgt.effective_to = <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>) - <span class="num">1</span>, tgt.is_current = <span class="num">0</span>
+  <span class="kw">UPDATE SET</span> tgt.is_current = <span class="num">0</span>, tgt.effective_to = <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>)
 <span class="kw">WHEN NOT MATCHED THEN</span>
-    <span class="kw">INSERT</span> (customer_bk, customer_name, customer_segment, region,
-             effective_from, row_hash)
-    <span class="kw">VALUES</span> (src.customer_bk, src.customer_name, src.customer_segment,
-             src.region, <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>), src.row_hash);</div>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-1">2. Partitioned Fact Table + Materialized View for Power BI</h4>
-              <p class="text-gray-500 text-sm mb-3">Monthly range partition + aligned columnstore index. A distributed materialized view pre-aggregates revenue so Power BI refreshes only the current partition slice.</p>
-              <div class="code-block"><span class="cm">-- Monthly partition scheme for incremental Power BI refresh</span>
-<span class="kw">CREATE PARTITION FUNCTION</span> pf_monthly (<span class="tp">DATE</span>)
-<span class="kw">AS RANGE RIGHT FOR VALUES</span> (<span class="str">'2023-01-01'</span>,<span class="str">'2023-02-01'</span>,<span class="str">'2023-03-01'</span>,
-    <span class="str">'2023-04-01'</span>,<span class="str">'2023-05-01'</span>,<span class="str">'2023-06-01'</span>,<span class="str">'2023-07-01'</span>,
-    <span class="str">'2023-08-01'</span>,<span class="str">'2023-09-01'</span>,<span class="str">'2023-10-01'</span>,<span class="str">'2023-11-01'</span>,<span class="str">'2023-12-01'</span>);
+  <span class="kw">INSERT</span> (customer_bk, customer_name, region, effective_from, is_current)
+  <span class="kw">VALUES</span> (src.customer_bk, src.customer_name, src.region, <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>), <span class="num">1</span>);</div>
+            <div class="code-block"><span class="cm"># Python quality gate executed before Gold publish</span>
+<span class="kw">def</span> <span class="fn">run_quality_checks</span>(df):
+    required_cols = {<span class="str">"order_id"</span>, <span class="str">"customer_id"</span>, <span class="str">"order_date"</span>, <span class="str">"amount"</span>}
+    missing = required_cols - set(df.columns)
+    <span class="kw">if</span> missing:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Missing required columns: {sorted(missing)}"</span>)
 
-<span class="kw">CREATE PARTITION SCHEME</span> ps_monthly
-<span class="kw">AS PARTITION</span> pf_monthly <span class="kw">ALL TO</span> ([PRIMARY]);
+    duplicate_orders = df.duplicated([<span class="str">"order_id"</span>]).sum()
+    <span class="kw">if</span> duplicate_orders > <span class="num">0</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Duplicate order_id records: {duplicate_orders}"</span>)
 
-<span class="cm">-- Fact table partitioned by sale_date</span>
-<span class="kw">CREATE TABLE</span> fact_sales (
-    sale_sk     <span class="tp">BIGINT</span>         <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>),
-    sale_date   <span class="tp">DATE</span>           <span class="kw">NOT NULL</span>,
-    customer_sk <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
-    product_sk  <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
-    store_sk    <span class="tp">BIGINT</span>         <span class="kw">NOT NULL</span>,
-    revenue     <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">2</span>),
-    units_sold  <span class="tp">INT</span>
-) <span class="kw">ON</span> ps_monthly(sale_date);
-
-<span class="kw">CREATE CLUSTERED COLUMNSTORE INDEX</span> cci_fact_sales
-    <span class="kw">ON</span> fact_sales <span class="kw">ON</span> ps_monthly(sale_date);
-
-<span class="cm">-- Materialized view: monthly revenue pre-aggregated for DirectQuery</span>
-<span class="kw">CREATE MATERIALIZED VIEW</span> mv_monthly_revenue
-<span class="kw">WITH</span> (DISTRIBUTION = <span class="fn">HASH</span>(store_sk)) <span class="kw">AS</span>
-<span class="kw">SELECT</span>
-    <span class="fn">DATEFROMPARTS</span>(<span class="fn">YEAR</span>(f.sale_date), <span class="fn">MONTH</span>(f.sale_date), <span class="num">1</span>) <span class="kw">AS</span> month_start,
-    d.region, p.category,
-    <span class="fn">SUM</span>(f.revenue)                       <span class="kw">AS</span> total_revenue,
-    <span class="fn">SUM</span>(f.units_sold)                    <span class="kw">AS</span> total_units,
-    <span class="fn">COUNT_BIG</span>(<span class="kw">DISTINCT</span> f.customer_sk)    <span class="kw">AS</span> unique_customers
-<span class="kw">FROM</span>  fact_sales   f
-<span class="kw">JOIN</span>  dim_customer d <span class="kw">ON</span> f.customer_sk = d.customer_sk <span class="kw">AND</span> d.is_current = <span class="num">1</span>
-<span class="kw">JOIN</span>  dim_product  p <span class="kw">ON</span> f.product_sk  = p.product_sk
-<span class="kw">GROUP BY</span> <span class="fn">DATEFROMPARTS</span>(<span class="fn">YEAR</span>(f.sale_date),<span class="fn">MONTH</span>(f.sale_date),<span class="num">1</span>), d.region, p.category;</div>
-            </div>
+    null_amount = df[<span class="str">"amount"</span>].isna().sum()
+    <span class="kw">if</span> null_amount > <span class="num">0</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Null amount records: {null_amount}"</span>)</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
-      <div class="p-8 md:p-10">
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 02</span>
-              <span class="text-xs text-gray-500">Insurance / Lakehouse</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white">Insurance-Ghost</h3>
-            <p class="text-cobalt-400 font-medium">Scalable Medallion Lakehouse</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag text-xs px-2 py-1 rounded">Medallion Architecture</span>
-            <span class="tag text-xs px-2 py-1 rounded">Delta Lake</span>
-            <span class="tag text-xs px-2 py-1 rounded">Window Functions</span>
-            <span class="tag text-xs px-2 py-1 rounded">Z-Order Indexing</span>
-          </div>
-        </div>
-        <p class="text-gray-400 leading-relaxed mb-6">Designed a full Bronze / Silver / Gold Medallion Architecture on Databricks + Azure Data Lake Gen2 for a high-volume synthetic insurance dataset. The Gold layer exposes risk-scoring analytics via RANK and LAG window functions, enabling claims pattern detection <span class="text-white font-medium">12&times; faster than the prior flat-table approach</span>.</p>
-        <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
-          <p class="text-cobalt-500/70 mb-2">[ Medallion Architecture ]</p>
-          Raw JSON/CSV &rarr; <span class="text-gray-400">Bronze</span> (raw, full history)<br/>
-          &rarr; <span class="text-gray-400">Silver</span> (cleaned: Policy + Claims + Customer joins)<br/>
-          &rarr; <span class="text-gray-400">Gold</span> (risk aggregates, RANK windows, serving layer)<br/>
-          Partitioned by Policy_Year &nbsp;&middot;&nbsp; Z-Order on Claim_ID + Policy_Number
-        </div>
-        <button onclick="toggleDD('dd2')" id="btn-dd2" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
-          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
-            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Z-Order, Partitioning &amp; Risk Window Functions
-          </span>
-          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="deep-dive-content" id="dd2">
-          <div class="pt-6 space-y-8">
-            <div>
-              <h4 class="text-white font-semibold mb-1">1. Delta Lake: Policy_Year Partitioning + Z-Order on Claim_ID</h4>
-              <p class="text-gray-500 text-sm mb-3">Horizontal partition by year eliminates full-table scans. Z-Order on (Claim_ID, Policy_Number) co-locates correlated rows so multi-table joins hit minimal files.</p>
-              <div class="code-block"><span class="cm"># PySpark: write Gold layer partitioned by Policy_Year</span>
-<span class="kw">from</span> pyspark.sql <span class="kw">import</span> functions <span class="kw">as</span> F
+    <div class="reveal grid md:grid-cols-3 gap-6">
+      <article class="bg-navy-800 border border-navy-700 rounded-xl p-6 hover:border-cobalt-600 transition-colors">
+        <h4 class="text-white font-bold mb-3">Insurance Risk Lakehouse</h4>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Problem</p>
+        <p class="text-gray-400 text-sm mb-4">Risk analysis depended on slow periodic extracts and lacked traceable transformation lineage.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Approach</p>
+        <p class="text-gray-400 text-sm mb-4">Built Bronze/Silver/Gold lakehouse with partition strategy, Delta optimisation, and SQL window functions for risk scoring.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Tools + Outcome</p>
+        <p class="text-gray-400 text-sm">Databricks, Delta Lake, Python, SQL. Improved analyst turnaround and enabled near real-time monitoring on curated Gold datasets.</p>
+      </article>
 
-gold_df = (
-    silver_claims_df
-    .<span class="fn">withColumn</span>(<span class="str">"Policy_Year"</span>, F.<span class="fn">year</span>(<span class="str">"policy_start_date"</span>))
-    .<span class="fn">withColumn</span>(<span class="str">"claim_amount"</span>, F.<span class="fn">coalesce</span>(F.<span class="fn">col</span>(<span class="str">"claim_amount"</span>), F.<span class="fn">lit</span>(<span class="num">0</span>)))
-)
+      <article class="bg-navy-800 border border-navy-700 rounded-xl p-6 hover:border-cobalt-600 transition-colors">
+        <h4 class="text-white font-bold mb-3">Legacy SQL Migration Utility</h4>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Problem</p>
+        <p class="text-gray-400 text-sm mb-4">On-prem migration work had high risk of schema drift and post-load reconciliation defects.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Approach</p>
+        <p class="text-gray-400 text-sm mb-4">Built Python CLI for schema checks, checksum validation, and controlled bulk loading with post-load index rebuild patterns.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Tools + Outcome</p>
+        <p class="text-gray-400 text-sm">Python, SQL Server, Azure Data Lake. Produced a repeatable migration runbook with verifiable row-level integrity checks.</p>
+      </article>
 
-(gold_df.write
-  .<span class="fn">format</span>(<span class="str">"delta"</span>)
-  .<span class="fn">mode</span>(<span class="str">"overwrite"</span>)
-  .<span class="fn">option</span>(<span class="str">"overwriteSchema"</span>, <span class="str">"true"</span>)
-  .<span class="fn">partitionBy</span>(<span class="str">"Policy_Year"</span>)
-  .<span class="fn">save</span>(<span class="str">"abfss://gold@datalake.dfs.core.windows.net/insurance/claims"</span>)
-)
-
-<span class="cm">-- Z-Order: cluster Claim_ID + Policy_Number within each partition</span>
-<span class="kw">OPTIMIZE</span> gold.insurance_claims
-<span class="kw">ZORDER BY</span> (Claim_ID, Policy_Number);
-
-<span class="cm">-- Retain 7-day time-travel, purge stale files</span>
-<span class="kw">VACUUM</span> gold.insurance_claims <span class="kw">RETAIN</span> <span class="num">168</span> HOURS;</div>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-1">2. Risk Pattern Detection &mdash; RANK, LAG &amp; Running Totals</h4>
-              <p class="text-gray-500 text-sm mb-3">High-frequency claimant detection using LAG (days-between-claims), cumulative exposure totals, and per-year claim ranking to feed the actuarial risk model.</p>
-              <div class="code-block"><span class="kw">WITH</span> claim_timeline <span class="kw">AS</span> (
-    <span class="kw">SELECT</span>
-        c.customer_id, cl.claim_date, cl.claim_amount, cl.claim_type,
-        <span class="fn">DATEDIFF</span>(<span class="str">'day'</span>,
-            <span class="fn">LAG</span>(cl.claim_date) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> c.customer_id <span class="kw">ORDER BY</span> cl.claim_date),
-            cl.claim_date
-        )                                           <span class="kw">AS</span> days_since_prev_claim,
-        <span class="fn">SUM</span>(cl.claim_amount) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> c.customer_id
-            <span class="kw">ORDER BY</span>     cl.claim_date
-            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>
-        )                                           <span class="kw">AS</span> cumulative_exposure,
-        <span class="fn">DENSE_RANK</span>() <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> c.customer_id, <span class="fn">YEAR</span>(cl.claim_date)
-            <span class="kw">ORDER BY</span>     cl.claim_amount <span class="kw">DESC</span>
-        )                                           <span class="kw">AS</span> claim_rank_ytd
-    <span class="kw">FROM</span>  fact_claims   cl
-    <span class="kw">JOIN</span>  dim_customer  c  <span class="kw">ON</span> cl.customer_id   = c.customer_id
-    <span class="kw">JOIN</span>  dim_policy    p  <span class="kw">ON</span> cl.policy_number = p.policy_number
-    <span class="kw">JOIN</span>  dim_product   pr <span class="kw">ON</span> p.product_code   = pr.product_code
-    <span class="kw">WHERE</span> p.policy_year = <span class="fn">YEAR</span>(<span class="fn">CURRENT_DATE</span>()) - <span class="num">1</span>
-),
-risk_flags <span class="kw">AS</span> (
-    <span class="kw">SELECT</span> *,
-        <span class="kw">CASE</span>
-            <span class="kw">WHEN</span> days_since_prev_claim &lt; <span class="num">30</span>     <span class="kw">THEN</span> <span class="str">'HIGH_FREQUENCY'</span>
-            <span class="kw">WHEN</span> cumulative_exposure   > <span class="num">500000</span>  <span class="kw">THEN</span> <span class="str">'HIGH_EXPOSURE'</span>
-            <span class="kw">WHEN</span> claim_rank_ytd = <span class="num">1</span>
-             <span class="kw">AND</span> claim_amount   > <span class="num">100000</span>  <span class="kw">THEN</span> <span class="str">'LARGE_SINGLE_CLAIM'</span>
-            <span class="kw">ELSE</span> <span class="str">'NORMAL'</span>
-        <span class="kw">END</span> <span class="kw">AS</span> risk_category
-    <span class="kw">FROM</span> claim_timeline
-)
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> risk_flags
-<span class="kw">WHERE</span>  risk_category <> <span class="str">'NORMAL'</span>
-<span class="kw">ORDER BY</span> cumulative_exposure <span class="kw">DESC</span>;</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <article class="bg-navy-800 border border-navy-700 rounded-xl p-6 hover:border-cobalt-600 transition-colors">
+        <h4 class="text-white font-bold mb-3">Time-Series Signal Pipeline</h4>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Problem</p>
+        <p class="text-gray-400 text-sm mb-4">Streaming market events required low-latency calculations for usable decision signals.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Approach</p>
+        <p class="text-gray-400 text-sm mb-4">Designed SQL-first analytics with composite indexing and sliding windows for SMA, volatility, and cross-event detection.</p>
+        <p class="text-cobalt-400 text-xs font-mono mb-3">Tools + Outcome</p>
+        <p class="text-gray-400 text-sm">SQL, Python, event ingestion. Delivered queryable signal outputs suitable for dashboarding and alert integrations.</p>
+      </article>
     </div>
-
-    <!-- PROJECT 3 -->
-    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
-      <div class="p-8 md:p-10">
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 03</span>
-              <span class="text-xs text-gray-500">Migration / Python + SQL</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white">Zenith-Migrator</h3>
-            <p class="text-cobalt-400 font-medium">Legacy SQL Server &rarr; Azure Data Lake</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag text-xs px-2 py-1 rounded">Python CLI</span>
-            <span class="tag text-xs px-2 py-1 rounded">Bulk Insert</span>
-            <span class="tag text-xs px-2 py-1 rounded">Checksum Audit</span>
-            <span class="tag text-xs px-2 py-1 rounded">Clustered Index</span>
-          </div>
-        </div>
-        <p class="text-gray-400 leading-relaxed mb-6">A production-grade Python CLI that orchestrates the full ETL lifecycle from legacy SQL Server 2012 to Azure Data Lake Gen2. Python handles pre-flight schema validation and checksum generation; SQL handles bulk loads and post-load clustered index rebuilds. Migrated <span class="text-white font-medium">1.4 million rows with automated 0% data-loss verification</span>.</p>
-        <button onclick="toggleDD('dd3')" id="btn-dd3" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
-          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
-            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Checksum Validation, Bulk Load &amp; Index Rebuild
-          </span>
-          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="deep-dive-content" id="dd3">
-          <div class="pt-6 space-y-8">
-            <div>
-              <h4 class="text-white font-semibold mb-1">1. Python Pre-Flight Validation CLI</h4>
-              <p class="text-gray-500 text-sm mb-3">Before a row moves, the migrator validates schemas match, computes source checksums, and aborts on mismatch &mdash; preventing silent data corruption.</p>
-              <div class="code-block"><span class="cm"># zenith_migrator/cli.py</span>
-<span class="kw">import</span> click, pyodbc
-<span class="kw">from</span> azure.storage.filedatalake <span class="kw">import</span> DataLakeServiceClient
-
-<span class="fn">@click.command</span>()
-<span class="fn">@click.option</span>(<span class="str">"--table"</span>,   required=<span class="kw">True</span>)
-<span class="fn">@click.option</span>(<span class="str">"--batch"</span>,   default=<span class="num">50000</span>)
-<span class="fn">@click.option</span>(<span class="str">"--dry-run"</span>, is_flag=<span class="kw">True</span>)
-<span class="kw">def</span> <span class="fn">migrate</span>(table, batch, dry_run):
-    <span class="str">"""Migrate a SQL Server table to ADLS with checksum audit."""</span>
-    schema_diff = <span class="fn">compare_schemas</span>(<span class="fn">get_source_schema</span>(table),
-                                   <span class="fn">get_target_schema</span>(table))
-    <span class="kw">if</span> schema_diff:
-        click.<span class="fn">echo</span>(<span class="str">f"Schema mismatch: {schema_diff}"</span>, err=<span class="kw">True</span>)
-        raise click.<span class="fn">Abort</span>()
-
-    src = <span class="fn">compute_checksum</span>(table, source=<span class="kw">True</span>)
-    click.<span class="fn">echo</span>(<span class="str">f"Source: {src['row_count']:,} rows | hash={src['col_hash']}"</span>)
-
-    <span class="kw">if not</span> dry_run:
-        <span class="fn">bulk_migrate</span>(table, batch_size=batch)
-        tgt = <span class="fn">compute_checksum</span>(table, source=<span class="kw">False</span>)
-        <span class="kw">if</span> src[<span class="str">'row_count'</span>] != tgt[<span class="str">'row_count'</span>]:
-            raise <span class="fn">RuntimeError</span>(<span class="str">"DATA LOSS DETECTED"</span>)
-        click.<span class="fn">echo</span>(<span class="str">f"Verified: {tgt['row_count']:,} rows | 0% data loss"</span>)
-
-<span class="kw">def</span> <span class="fn">compute_checksum</span>(table, source=<span class="kw">True</span>):
-    query = <span class="str">f"""
-        SELECT COUNT(*)             AS row_count,
-               CHECKSUM_AGG(CHECKSUM(*)) AS col_hash
-        FROM   [{table}] WITH (NOLOCK)
-    """</span>
-    <span class="kw">with</span> (<span class="fn">get_src_conn</span>() <span class="kw">if</span> source <span class="kw">else</span> <span class="fn">get_tgt_conn</span>()) <span class="kw">as</span> conn:
-        r = conn.<span class="fn">execute</span>(query).<span class="fn">fetchone</span>()
-        <span class="kw">return</span> {<span class="str">"row_count"</span>: r[<span class="num">0</span>], <span class="str">"col_hash"</span>: r[<span class="num">1</span>]}</div>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-1">2. Bulk Load + Post-Load Clustered Index</h4>
-              <p class="text-gray-500 text-sm mb-3">Indexes are intentionally dropped before bulk insert (minimally logged) and rebuilt after &mdash; the correct sequence for maximum throughput on large row sets.</p>
-              <div class="code-block"><span class="cm">-- Drop index before bulk load (enables minimal logging)</span>
-<span class="kw">IF EXISTS</span> (<span class="kw">SELECT</span> <span class="num">1</span> <span class="kw">FROM</span> sys.indexes
-           <span class="kw">WHERE</span> object_id = <span class="fn">OBJECT_ID</span>(<span class="str">'dbo.migration_staging'</span>)
-           <span class="kw">AND</span>   name      = <span class="str">'cidx_staging_pk'</span>)
-    <span class="kw">DROP INDEX</span> cidx_staging_pk <span class="kw">ON</span> dbo.migration_staging;
-
-<span class="cm">-- Bulk load with TABLOCK for minimal logging</span>
-<span class="kw">BULK INSERT</span> dbo.migration_staging
-<span class="kw">FROM</span> <span class="str">'\\staging\export\orders_001.csv'</span>
-<span class="kw">WITH</span> (
-    FIELDTERMINATOR = <span class="str">','</span>, ROWTERMINATOR = <span class="str">'\n'</span>,
-    FIRSTROW        = <span class="num">2</span>,   BATCHSIZE      = <span class="num">50000</span>,
-    TABLOCK, CHECK_CONSTRAINTS, FIRE_TRIGGERS
-);
-
-<span class="cm">-- Rebuild clustered index after all batches complete</span>
-<span class="kw">CREATE CLUSTERED INDEX</span> cidx_staging_pk
-    <span class="kw">ON</span> dbo.migration_staging (order_id)
-    <span class="kw">WITH</span> (SORT_IN_TEMPDB = <span class="kw">ON</span>, FILLFACTOR = <span class="num">90</span>, ONLINE = <span class="kw">OFF</span>);
-
-<span class="cm">-- Non-clustered covering index for query patterns</span>
-<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_staging_cust_date
-    <span class="kw">ON</span> dbo.migration_staging (customer_id, order_date)
-    <span class="kw">INCLUDE</span> (order_total, status)
-    <span class="kw">WITH</span> (FILLFACTOR = <span class="num">85</span>, ONLINE = <span class="kw">OFF</span>);
-
-<span class="cm">-- Row-count integrity guard</span>
-<span class="kw">DECLARE</span> @src <span class="tp">BIGINT</span> = <span class="num">1412847</span>;
-<span class="kw">DECLARE</span> @tgt <span class="tp">BIGINT</span> = (<span class="kw">SELECT</span> <span class="fn">COUNT_BIG</span>(*) <span class="kw">FROM</span> dbo.migration_staging <span class="kw">WITH</span>(NOLOCK));
-<span class="kw">IF</span> @src <> @tgt
-    <span class="kw">THROW</span> <span class="num">50001</span>, <span class="str">'DATA LOSS: row count mismatch post-migration.'</span>, <span class="num">1</span>;
-<span class="kw">PRINT</span> <span class="str">'Migration audit PASSED — zero data loss confirmed.'</span>;</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 4 -->
-    <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
-      <div class="p-8 md:p-10">
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-          <div>
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-xs font-mono text-cobalt-400 bg-cobalt-500/10 border border-cobalt-500/20 px-2 py-0.5 rounded">PROJECT 04</span>
-              <span class="text-xs text-gray-500">FinTech / Time-Series</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white">Chaos Arbitrageur</h3>
-            <p class="text-cobalt-400 font-medium">Trading Signal Engine</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag text-xs px-2 py-1 rounded">Time-Series SQL</span>
-            <span class="tag text-xs px-2 py-1 rounded">Sliding Windows</span>
-            <span class="tag text-xs px-2 py-1 rounded">Composite Index</span>
-            <span class="tag text-xs px-2 py-1 rounded">VWAP / Volatility</span>
-          </div>
-        </div>
-        <p class="text-gray-400 leading-relaxed mb-6">Real-time financial event processing pipeline. Ingests tick-level market data and computes moving averages, volatility metrics, and cross-asset signals using sliding window SQL. A composite index on <code class="text-cobalt-300 font-mono text-xs">(Ticker, Timestamp)</code> enables <span class="text-white font-medium">sub-second signal retrieval</span> across millions of daily events.</p>
-        <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
-          <p class="text-cobalt-500/70 mb-2">[ Architecture Diagram Placeholder &mdash; Chaos Arbitrageur ]</p>
-          Market Feed API &rarr; Kafka Ingest &rarr; Bronze (raw ticks)<br/>
-          &rarr; Silver (OHLCV normalised) &rarr; Gold (signals, moving avgs, VWAP)<br/>
-          &rarr; Composite Index (Ticker, Timestamp) &rarr; Sub-second Query Layer<br/>
-          &rarr; Signal Dashboard / Webhook Alerts
-        </div>
-        <button onclick="toggleDD('dd4')" id="btn-dd4" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
-          <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
-            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Deep Dive &mdash; Composite Indexing &amp; Sliding Window Analysis
-          </span>
-          <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="deep-dive-content" id="dd4">
-          <div class="pt-6 space-y-8">
-            <div>
-              <h4 class="text-white font-semibold mb-1">1. Composite Index Design &mdash; Sub-Second Signal Retrieval</h4>
-              <p class="text-gray-500 text-sm mb-3">All query patterns are ticker-first with a time range. The composite clustered index on (ticker, trade_ts) guarantees index seeks, not scans, at any scale.</p>
-              <div class="code-block"><span class="cm">-- Partitioned tick table, composite cluster key</span>
-<span class="kw">CREATE TABLE</span> market_ticks (
-    tick_id     <span class="tp">BIGINT</span>        <span class="kw">IDENTITY</span>(<span class="num">1</span>,<span class="num">1</span>),
-    ticker      <span class="tp">VARCHAR</span>(<span class="num">10</span>)   <span class="kw">NOT NULL</span>,
-    trade_ts    <span class="tp">DATETIME2</span>(<span class="num">6</span>) <span class="kw">NOT NULL</span>,
-    open_price  <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
-    high_price  <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
-    low_price   <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
-    close_price <span class="tp">DECIMAL</span>(<span class="num">18</span>,<span class="num">6</span>),
-    volume      <span class="tp">BIGINT</span>,
-    trade_date  <span class="tp">DATE</span>          <span class="kw">NOT NULL</span>
-) <span class="kw">ON</span> ps_trade_daily(trade_date);
-
-<span class="cm">-- Clustered composite: ticker first, then timestamp</span>
-<span class="kw">CREATE CLUSTERED INDEX</span> cidx_ticks_ticker_ts
-    <span class="kw">ON</span> market_ticks (ticker <span class="kw">ASC</span>, trade_ts <span class="kw">ASC</span>);
-
-<span class="cm">-- Covering NCCI: OHLCV on the same key avoids key lookups</span>
-<span class="kw">CREATE NONCLUSTERED INDEX</span> nidx_ticks_ohlcv
-    <span class="kw">ON</span> market_ticks (ticker, trade_ts)
-    <span class="kw">INCLUDE</span> (open_price, high_price, low_price, close_price, volume)
-    <span class="kw">WITH</span> (FILLFACTOR = <span class="num">80</span>);</div>
-            </div>
-            <div>
-              <h4 class="text-white font-semibold mb-1">2. Sliding Window &mdash; SMA, Volatility &amp; VWAP</h4>
-              <p class="text-gray-500 text-sm mb-3">SMA-5, SMA-30, rolling standard deviation (volatility), VWAP, and Golden/Death Cross detection all in a single CTE chain &mdash; no application-layer computation needed.</p>
-              <div class="code-block"><span class="kw">WITH</span> price_base <span class="kw">AS</span> (
-    <span class="kw">SELECT</span>
-        ticker, trade_ts, trade_date, close_price, volume,
-        <span class="fn">AVG</span>(close_price) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
-            <span class="kw">ROWS BETWEEN</span> <span class="num">4</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
-        ) <span class="kw">AS</span> sma_5,
-        <span class="fn">AVG</span>(close_price) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
-            <span class="kw">ROWS BETWEEN</span> <span class="num">29</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
-        ) <span class="kw">AS</span> sma_30,
-        <span class="fn">STDEVP</span>(close_price) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts
-            <span class="kw">ROWS BETWEEN</span> <span class="num">29</span> <span class="kw">PRECEDING AND CURRENT ROW</span>
-        ) <span class="kw">AS</span> volatility_30,
-        <span class="fn">SUM</span>(close_price * volume) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> ticker, trade_date
-            <span class="kw">ORDER BY</span>     trade_ts
-            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>
-        ) / <span class="fn">NULLIF</span>(<span class="fn">SUM</span>(volume) <span class="kw">OVER</span> (
-            <span class="kw">PARTITION BY</span> ticker, trade_date
-            <span class="kw">ORDER BY</span>     trade_ts
-            <span class="kw">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>), <span class="num">0</span>
-        )                         <span class="kw">AS</span> vwap,
-        (close_price - <span class="fn">LAG</span>(close_price,<span class="num">1</span>) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts))
-        / <span class="fn">NULLIF</span>(<span class="fn">LAG</span>(close_price,<span class="num">1</span>) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts),<span class="num">0</span>)
-                                  <span class="kw">AS</span> pct_return
-    <span class="kw">FROM</span> market_ticks
-    <span class="kw">WHERE</span> trade_date >= <span class="fn">DATEADD</span>(day,-<span class="num">90</span>,<span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>))
-),
-signals <span class="kw">AS</span> (
-    <span class="kw">SELECT</span> *,
-        <span class="kw">CASE</span>
-            <span class="kw">WHEN</span> sma_5 > sma_30
-             <span class="kw">AND</span> <span class="fn">LAG</span>(sma_5)  <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
-              <= <span class="fn">LAG</span>(sma_30) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
-                <span class="kw">THEN</span> <span class="str">'GOLDEN_CROSS'</span>
-            <span class="kw">WHEN</span> sma_5 < sma_30
-             <span class="kw">AND</span> <span class="fn">LAG</span>(sma_5)  <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
-              >= <span class="fn">LAG</span>(sma_30) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> ticker <span class="kw">ORDER BY</span> trade_ts)
-                <span class="kw">THEN</span> <span class="str">'DEATH_CROSS'</span>
-        <span class="kw">END</span> <span class="kw">AS</span> signal
-    <span class="kw">FROM</span> price_base
-)
-<span class="kw">SELECT</span> ticker, trade_ts, close_price,
-       <span class="fn">ROUND</span>(sma_5,<span class="num">4</span>) <span class="kw">AS</span> sma_5, <span class="fn">ROUND</span>(sma_30,<span class="num">4</span>) <span class="kw">AS</span> sma_30,
-       <span class="fn">ROUND</span>(volatility_30,<span class="num">6</span>) <span class="kw">AS</span> volatility, <span class="fn">ROUND</span>(vwap,<span class="num">4</span>) <span class="kw">AS</span> vwap,
-       <span class="fn">ROUND</span>(pct_return*<span class="num">100</span>,<span class="num">4</span>) <span class="kw">AS</span> pct_return, signal
-<span class="kw">FROM</span>  signals
-<span class="kw">WHERE</span> signal <span class="kw">IS NOT NULL</span>
-<span class="kw">ORDER BY</span> trade_ts <span class="kw">DESC</span>;</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div><!-- /projects container -->
 </section>
 
