@@ -71,6 +71,7 @@
       <a href="#certs"      class="nav-link hover:text-white">Certs</a>
       <a href="#skills"     class="nav-link hover:text-white">Skills</a>
       <a href="#projects"   class="nav-link hover:text-white">Projects</a>
+      <a href="#case-study" class="nav-link hover:text-white">Case Study</a>
       <a href="#consulting" class="nav-link hover:text-white">Experience</a>
       <a href="#contact"    class="nav-link hover:text-white">Contact</a>
     </div>
@@ -85,6 +86,7 @@
     <a href="#certs"      class="block hover:text-cobalt-400">Certs</a>
     <a href="#skills"     class="block hover:text-cobalt-400">Skills</a>
     <a href="#projects"   class="block hover:text-cobalt-400">Projects</a>
+    <a href="#case-study" class="block hover:text-cobalt-400">Case Study</a>
     <a href="#consulting" class="block hover:text-cobalt-400">Experience</a>
     <a href="#contact"    class="block hover:text-cobalt-400">Contact</a>
   </div>
@@ -326,62 +328,96 @@
   <div class="max-w-6xl mx-auto">
     <div class="reveal text-center mb-16">
       <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Featured Projects</p>
-      <h2 class="text-4xl font-bold mb-4">Proof of Execution<br/><span class="blue-text">Systems I Have Built</span></h2>
-      <p class="text-gray-400 max-w-2xl mx-auto">Each project is presented using Problem, Approach, Tools, and Outcome so technical depth is clear to hiring managers and contract stakeholders.</p>
+      <h2 class="text-4xl font-bold mb-4">Flagship Delivery + Supporting Systems<br/><span class="blue-text">Proof of Engineering Execution</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">The flagship project below is structured as an end-to-end build with source context, architecture, transformation logic, modeling decisions, and validation approach.</p>
     </div>
     <div class="reveal project-card bg-navy-800 rounded-xl mb-8 overflow-hidden">
       <div class="p-8 md:p-10">
         <div class="flex items-center justify-between gap-4 mb-5">
           <div>
             <p class="text-xs font-mono text-cobalt-400 mb-2">FLAGSHIP CASE STUDY</p>
-            <h3 class="text-2xl font-bold text-white">Legacy Retail Reporting to Production Lakehouse</h3>
+            <h3 class="text-2xl font-bold text-white">Flagship: Retail Demand and Inventory Pipeline</h3>
           </div>
           <span class="tag text-xs px-2 py-1 rounded">End-to-End Delivery</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 mb-6 text-xs">
+          <span class="tag px-2 py-1 rounded">Public Dataset</span>
+          <span class="tag px-2 py-1 rounded">ELT Pipeline</span>
+          <span class="tag px-2 py-1 rounded">Star Schema</span>
+          <span class="tag px-2 py-1 rounded">Power BI Output</span>
+          <a href="https://github.com/TshiamoTLM/Data-Engineer-Project" target="_blank" rel="noopener noreferrer" class="border border-cobalt-500/40 text-cobalt-300 hover:text-white hover:border-cobalt-400 rounded px-3 py-1 transition-colors">View GitHub Artifacts</a>
         </div>
         <div class="grid md:grid-cols-2 gap-6 mb-6">
           <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
             <p class="text-cobalt-400 text-xs font-mono mb-2">Problem Statement</p>
-            <p class="text-gray-400 text-sm leading-relaxed">A retail reporting stack depended on CSV extracts and manual spreadsheet joins, with frequent reconciliation issues and slow month-end reporting.</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Retail analysts needed dependable visibility into demand, stock movement, and replenishment risk, but source data arrived in inconsistent files and required manual consolidation before reporting.</p>
           </div>
           <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
             <p class="text-cobalt-400 text-xs font-mono mb-2">Approach</p>
-            <p class="text-gray-400 text-sm leading-relaxed">Designed ELT pipeline layers for ingestion, validation, dimensional modelling, and BI serving. Added data contracts, row-level quality checks, and controlled incremental processing.</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Implemented an ELT pipeline with staged ingestion, schema validation, SQL-first transformations, and a dimensional model designed for both operational and executive analytics.</p>
           </div>
           <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
             <p class="text-cobalt-400 text-xs font-mono mb-2">Tools Used</p>
-            <p class="text-gray-400 text-sm leading-relaxed">Azure Data Factory, Azure Data Lake Gen2, Synapse SQL, Power BI, Python for validation utilities, and SQL MERGE logic for SCD Type 2 dimensions.</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Public retail datasets, Azure Data Factory patterns, SQL transformation models, Python validation scripts, and Power BI semantic reporting with incremental refresh configuration.</p>
           </div>
           <div class="bg-navy-900 border border-navy-700 rounded-lg p-5">
             <p class="text-cobalt-400 text-xs font-mono mb-2">Outcome / Impact</p>
-            <p class="text-gray-400 text-sm leading-relaxed">Reporting moved from ad hoc files to a governed model with consistent KPI definitions, faster refresh cycles, and auditable data lineage for production support.</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Delivered a repeatable pipeline and governed model that replaced manual report assembly with a traceable data product. Validation checks made data issues visible before dashboard publication.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-4">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Data Source Context</p>
+            <p class="text-gray-400 text-sm">Public retail demand and order datasets used to simulate production-like ingestion, schema drift handling, and incremental loads.</p>
+          </div>
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-4">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Modeling Decision</p>
+            <p class="text-gray-400 text-sm">Star schema with fact_orders and dimensions for product, customer, store, and calendar to support reusable analytics across teams.</p>
+          </div>
+          <div class="bg-navy-900 border border-navy-700 rounded-lg p-4">
+            <p class="text-cobalt-400 text-xs font-mono mb-2">Validation Strategy</p>
+            <p class="text-gray-400 text-sm">Row-count reconciliation, null threshold checks, duplicate-key detection, and publish gates for failed quality rules.</p>
           </div>
         </div>
 
         <div class="bg-navy-900/70 border border-dashed border-navy-600 rounded-lg p-5 mb-6 font-mono text-xs text-gray-500">
           <p class="text-cobalt-500/70 mb-2">[ Architecture Flow ]</p>
-          Source Systems (POS + ERP + CSV) &rarr; ADF Ingestion &rarr; ADLS Bronze<br/>
-          &rarr; Synapse SQL Silver (validation, standardisation, dedupe)<br/>
-          &rarr; Star Schema Gold (facts + SCD dimensions + aggregates)<br/>
-          &rarr; Power BI Semantic Model &rarr; Executive and Operational Dashboards
+          1) Raw Data Intake &rarr; Landing Zone (versioned files)<br/>
+          2) Bronze Layer &rarr; immutable append-only records with ingestion timestamp<br/>
+          3) Silver Layer &rarr; deduplication, conformed keys, business rule transforms<br/>
+          4) Gold Layer &rarr; fact and dimension models for demand and inventory analytics<br/>
+          5) Semantic Layer &rarr; Power BI model with governed KPI definitions
         </div>
 
         <button onclick="toggleDD('dd1')" id="btn-dd1" class="toggle-btn w-full flex items-center justify-between p-4 bg-navy-900 border border-navy-600 rounded-lg hover:border-cobalt-500 transition-colors group">
           <span class="flex items-center gap-3 text-sm font-semibold text-gray-300 group-hover:text-white">
-            <span class="text-cobalt-400 font-mono">&gt;_</span> Implementation Snippets (SCD merge + quality gate)
+            <span class="text-cobalt-400 font-mono">&gt;_</span> Technical Implementation (incremental SQL + quality gate)
           </span>
           <svg class="w-4 h-4 text-cobalt-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="deep-dive-content" id="dd1">
           <div class="pt-6 grid md:grid-cols-2 gap-6">
-            <div class="code-block"><span class="cm">-- SCD Type 2 merge pattern (dimension history)</span>
-<span class="kw">MERGE INTO</span> dim_customer <span class="kw">AS</span> tgt
-<span class="kw">USING</span> stg_customer <span class="kw">AS</span> src
-<span class="kw">ON</span> tgt.customer_bk = src.customer_bk <span class="kw">AND</span> tgt.is_current = <span class="num">1</span>
-<span class="kw">WHEN MATCHED AND</span> tgt.row_hash <> src.row_hash <span class="kw">THEN</span>
-  <span class="kw">UPDATE SET</span> tgt.is_current = <span class="num">0</span>, tgt.effective_to = <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>)
+            <div class="code-block"><span class="cm">-- Incremental transform using watermark and merge</span>
+<span class="kw">DECLARE</span> @last_success_ts <span class="tp">DATETIME2</span> = (
+  <span class="kw">SELECT</span> <span class="fn">MAX</span>(successful_load_ts)
+  <span class="kw">FROM</span> etl_audit
+  <span class="kw">WHERE</span> pipeline_name = <span class="str">'retail_orders_silver'</span>
+);
+
+<span class="kw">WITH</span> delta_incoming <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> *
+  <span class="kw">FROM</span> bronze_orders
+  <span class="kw">WHERE</span> ingestion_ts > @last_success_ts
+)
+<span class="kw">MERGE INTO</span> silver_orders <span class="kw">AS</span> tgt
+<span class="kw">USING</span> delta_incoming <span class="kw">AS</span> src
+<span class="kw">ON</span> tgt.order_id = src.order_id
+<span class="kw">WHEN MATCHED THEN</span>
+  <span class="kw">UPDATE SET</span> tgt.amount = src.amount, tgt.updated_at = <span class="fn">GETDATE</span>()
 <span class="kw">WHEN NOT MATCHED THEN</span>
-  <span class="kw">INSERT</span> (customer_bk, customer_name, region, effective_from, is_current)
-  <span class="kw">VALUES</span> (src.customer_bk, src.customer_name, src.region, <span class="fn">CAST</span>(<span class="fn">GETDATE</span>() <span class="kw">AS</span> <span class="tp">DATE</span>), <span class="num">1</span>);</div>
+  <span class="kw">INSERT</span> (order_id, customer_id, product_id, amount, order_date, updated_at)
+  <span class="kw">VALUES</span> (src.order_id, src.customer_id, src.product_id, src.amount, src.order_date, <span class="fn">GETDATE</span>());</div>
             <div class="code-block"><span class="cm"># Python quality gate executed before Gold publish</span>
 <span class="kw">def</span> <span class="fn">run_quality_checks</span>(df):
     required_cols = {<span class="str">"order_id"</span>, <span class="str">"customer_id"</span>, <span class="str">"order_date"</span>, <span class="str">"amount"</span>}
@@ -395,7 +431,11 @@
 
     null_amount = df[<span class="str">"amount"</span>].isna().sum()
     <span class="kw">if</span> null_amount > <span class="num">0</span>:
-        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Null amount records: {null_amount}"</span>)</div>
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Null amount records: {null_amount}"</span>)
+
+    revenue_outliers = (df[<span class="str">"amount"</span>] < <span class="num">0</span>).sum()
+    <span class="kw">if</span> revenue_outliers > <span class="num">0</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">f"Negative amount rows: {revenue_outliers}"</span>)</div>
           </div>
         </div>
       </div>
@@ -433,6 +473,60 @@
       </article>
     </div>
   </div><!-- /projects container -->
+</section>
+
+<!-- ══ CASE STUDY ══ -->
+<section id="case-study" class="py-24 px-6 bg-navy-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal text-center mb-14">
+      <p class="text-cobalt-400 font-mono text-sm tracking-widest uppercase mb-3">// Case Study Deep Dive</p>
+      <h2 class="text-4xl font-bold mb-4">From Raw Files to Trusted Decisions<br/><span class="blue-text">End-to-End Engineering Reasoning</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">This section shows how I think through pipeline design choices, data modeling, and performance tradeoffs on a realistic workload.</p>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <p class="text-cobalt-400 text-xs font-mono mb-2">Before</p>
+        <p class="text-gray-400 text-sm">Manual spreadsheet consolidation, inconsistent business rules between teams, and no reliable way to trace errors back to source records.</p>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <p class="text-cobalt-400 text-xs font-mono mb-2">After</p>
+        <p class="text-gray-400 text-sm">A layered data product with quality gates, conformed dimensions, and governed KPI logic that can be re-used across reporting consumers.</p>
+      </div>
+    </div>
+
+    <div class="reveal bg-navy-800 border border-navy-700 rounded-xl p-8 mb-6">
+      <h3 class="text-white font-semibold mb-5">Pipeline Flow and Engineering Decisions</h3>
+      <ol class="space-y-4 text-sm text-gray-400">
+        <li>1. Ingestion: landed all source files with immutable timestamps so reruns do not overwrite source history.</li>
+        <li>2. Standardization: normalized keys and date formats, then quarantined invalid records for review instead of dropping them silently.</li>
+        <li>3. Transformation: applied SQL business rules in Silver models to keep transformations reviewable and version controlled.</li>
+        <li>4. Modeling: built star schema entities to separate operational transaction detail from analytics-ready aggregates.</li>
+        <li>5. Serving: exposed curated Gold views to Power BI with clear semantic definitions for shared KPIs.</li>
+      </ol>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-6">
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">Performance and Reliability Focus</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>Partition-aware loading strategy to avoid full refresh cycles.</li>
+          <li>Incremental merge logic controlled by pipeline watermark state.</li>
+          <li>Publish blocking when data quality thresholds fail.</li>
+          <li>Audit table for every load run to support incident response.</li>
+        </ul>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6">
+        <h3 class="text-white font-semibold mb-4">Business Value Delivery</h3>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>Reduced dependence on manual reconciliation steps.</li>
+          <li>Improved consistency of demand and inventory reporting.</li>
+          <li>Faster access to curated data for analyst and operations teams.</li>
+          <li>Stronger trust in dashboard outputs through traceable lineage.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ══ CONSULTING ══ -->
